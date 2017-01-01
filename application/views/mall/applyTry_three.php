@@ -39,7 +39,7 @@
                             <p>规格：<span><?php echo $product_details['color'].' '.$product_details['size']; ?></span></p>
                         </div>
                     </div>
-                    <p>需拍下数量：<span><?php echo $product_details['amount_perorder']; ?></span>件 &nbsp; 金额<span>&yen;<?php echo $product_details['unit_price']; ?></span></p>
+                    <p>需拍下数量：<span><?php echo $product_details['buy_sum']; ?></span>件 &nbsp; 金额<span>&yen;<?php echo $product_details['unit_price']; ?></span></p>
                     <h2>注意：</h2>
                     <p>1、请核实您购买的商品是否为<b><?php echo $product_details['unit_price']; ?></b>。</p>
                     <p>2、当前商品为<b>
