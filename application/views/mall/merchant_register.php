@@ -181,7 +181,7 @@
     $('.myAlert').on('click','.close,.cancel,.confirm',function(){
         $('.modal').css('display','none');
         enableScroll();
-        location.href = "<?=base_url('mall/homepage/index')?>";
+        location.href = "<?=base_url('login/index')?>";
     })
 
     $('.user_name').on('blur',function(){
