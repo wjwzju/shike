@@ -32,7 +32,8 @@ class Merchant_add_bankCard extends MY_Controller {
 			          'banktype' => $banktype,
 			          'branchbank' => $branchbank,
 			          'banknum' => $banknum,
-			          'type' => "0");
+			          'type' => "0"
+			          'time' => date('Y-m-d H:i:s',time()));
 		$this->db->insert('bankbind', $info);
 	}
 }

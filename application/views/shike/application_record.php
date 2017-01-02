@@ -37,7 +37,7 @@
                     </div>
                     <div class="detalis">
                         <ul>
-                            <li><img src="images/shike/sj_grzx_bg_sp_default.png" alt=""></li>
+                            <li><img src="<?php echo $v['picture_url'];?>" alt=""></li>
                             <li>
                                 <p class="clothes_name">商品名称：<span><?php echo $v['product_name'];?></span></p>
                                 <p>店铺名称：<span><?php echo $v['shopname'];?></span></p>
@@ -67,7 +67,7 @@
                             </li>
                             <li>
                                 <p class="status">恭喜您中了免费试用商品！</p>
-                                <p>快去<a href="02_try_winningManage.html">试用中奖管理</a>领取吧！</p>
+                                <p>快去<a href="/shike_try_winningManage">试用中奖管理</a>领取吧！</p>
                             </li>
                         <?php endif;?>
                         <?php if($v['apply_status'] == 4):?>
@@ -76,7 +76,7 @@
                             </li>
                             <li>
                                 <p class="status">恭喜您获得了优惠购买商品资格！</p>
-                                <p>快去<a href="02_try_winningManage.html">优惠购买管理</a>领取吧！</p>
+                                <p>快去<a href="/shike_try_winningManage">优惠购买管理</a>领取吧！</p>
                             </li>
                         <?php endif;?>
                          <input type="hidden" id="apply_list_id_<?php echo $apply_list_count;?>" value="<?php echo $v['apply_id'];?>">

@@ -6,26 +6,6 @@
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 <link href="css/select.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery.js"></script>
-<!-- <script type="text/javascript" src="js/jquery.idTabs.min.js"></script>
-<script type="text/javascript" src="js/select-ui.min.js"></script>
-<script type="text/javascript" src="editor/kindeditor.js"></script>
-
-<script type="text/javascript">
-    KE.show({
-        id : 'content7',
-        cssPath : './index.css'
-    });
-  </script>
-  
-<script type="text/javascript">
-$(document).ready(function(e) {
-
-	$(".select3").uedSelect({
-		width : 152
-	});
-});
-</script> -->
-
 
 </head>
 
@@ -62,8 +42,8 @@ $(document).ready(function(e) {
 	    <div class="place">
         <span>位置：</span>
         <ul class="placeul">
-            <li><a href="/admin">首页</a></li>
-            <li><a href="/admin_merchant_basic">商家管理</a></li>
+            <li><a href="#">首页</a></li>
+            <li><a href="#">订单列表</a></li>
         </ul>
     </div>
     
@@ -84,31 +64,57 @@ $(document).ready(function(e) {
     	<thead>
     	<tr>
             <th><input name="" type="checkbox" value="" checked="checked"/></th>
-        <th>商家ID</th>
-        <th>注册时间</th>
+        <th>订单编号</th>
+        <th>生成时间</th>
+        <th>试客账号</th>
         <th>商家账号</th>
-        <th>手机号</th>
-        <th>QQ号</th>
-        <th>会员类型</th>
-        <th>会员到期时间</th>
-		<th>操作</th>
+        <th>商品名称</th>
+        <th>店铺名称</th>
+        <th>平台</th>
+		<th>商品链接</th>
+        <th>详情信息</th>
+        <th>状态</th>
         </tr>
         </thead>
         <tbody>
         <?php $count=-1;?>
-        <?php foreach($sellers as $v):?>
+        <?php foreach($orders as $v):?>
         <?php $count++;?>
         <tr>
         <td><input name="" type="checkbox" value="" /></td>
+        <td><?php echo $v['out_sorderid'];?></td>
+        <td><?php echo $v['time'];?></td>
+        <td><?php echo $v['user_id'];?></td>
         <td><?php echo $v['seller_id'];?></td>
-        <td><?php echo $v['reg_time'];?></td>
-        <td><?php echo $v['user_name'];?></td>
-        <td><?php echo $v['tel'];?></td>
-        <td><?php echo $v['qq'];?></td>
-        <td><?php echo ($v['level']==1 ? '试用会员':'正式会员');?></td>
-		<td><?php echo $v['end_time'];?></td>
-        <td><a href="javascript:void(0)" class="tablelink" onclick="edit_merchant(<?php echo $count;?>)">编辑</a></td>
-        </tr>
+        <td><?php echo $v['product_name'];?></td>
+        <td><?php echo $v['shopname'];?></td>
+		<td><?php echo ($v['platform_id']==1?"淘宝":"天猫");?></td>
+        <td><?php echo $v['product_link'];?></td>
+        <td><a href="javascript:void(0)" class="tablelink">查看</a></td>
+    <?php if($v['status'] == 1):?>
+        <td>待发货</td>
+    <?php endif;?>
+    <?php if($v['status'] == 2):?>
+        <td>待审核评价</td>
+    <?php endif;?>
+    <?php if($v['status'] == 3):?>
+        <td>待确认评价</td>
+    <?php endif;?>
+    <?php if($v['status'] == 4):?>
+        <td>待领取下单</td>
+    <?php endif;?>
+    <?php if($v['status'] == 5):?>
+        <td>待复制评价</td>
+    <?php endif;?>
+    <?php if($v['status'] == 6):?>
+        <td>待收货评价</td>
+    <?php endif;?>
+    <?php if($v['status'] == 7):?>
+        <td>已完成</td>
+    <?php endif;?>
+    <?php if($v['status'] == 8):?>
+        <td>已取消</td>
+    <?php endif;?>
         <input type="hidden" id="tag_<?php echo $count;?>" value="<?php echo $v['seller_id'];?>">
         <?php endforeach ?>
         </tbody>

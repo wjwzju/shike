@@ -66,7 +66,7 @@
                     <li><span>联系方式</span></li>
                     <li>
                         <span>QQ:<?php echo $sellerinfo['qq'];?></span><br/>
-                        <span>手机：<?php echo $sellerinfo['tel'];?></span>
+                        <span>手机：<?php echo substr($sellerinfo['tel'], 0,3);?>****<?php echo substr($sellerinfo['tel'], -4);?></span>
                     </li>
                     <li><a href="/merchant_set_sellerqq">修改</a><br/><a href="/merchant_set_sellertel">修改</a></li>
                 </ul>

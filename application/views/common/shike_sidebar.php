@@ -6,8 +6,8 @@
         <a  href="javascript:void(0);">试用管理</a>
         <ul>
             <li><a href="/shike_application_record">申请记录</a></li>
-            <li><a href="/shike_try_winningManage">试用中奖管理</a></li>
-            <li><a href="/shike_privilege_buyManage">优惠购买管理</a></li>
+            <li><a id="win_num" href="/shike_try_winningManage">试用中奖管理（0）</a></li>
+            <li><a id="buy_num" href="/shike_privilege_buyManage">优惠购买管理（0）</a></li>
         </ul>
     </div>
     <div class="title account_information">
@@ -26,6 +26,27 @@
         </ul>
     </div>
     <div class="title message_center">
-        <a href="/shike_message_center">消息中心</a>
+        <a id="mess_num" href="/shike_message_center">消息中心（0）</a>
     </div>
 </div>
+<script>
+    $(function(){
+        $.ajax({
+            url : '/shike_userapi/get_sideinfo',
+            data:{},
+            type : 'post',
+            dataType : 'json',
+            cache : false,
+            success : function (result){
+                $("#win_num").text("试用中奖管理（"+result.win_count+"）");
+                $("#buy_num").text("优惠购买管理（"+result.buy_count+"）");
+                $("#mess_num").text("消息中心（"+result.mess_count+"）");
+            },
+            error : function (XMLHttpRequest, textStatus){
+                console.log("insert_fake_activity false");
+                console.log(XMLHttpRequest);
+                console.log(textStatus);
+            }
+        })
+    });
+</script>

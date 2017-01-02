@@ -28,11 +28,6 @@
                 <br/>
                 <p><span id="phoneerror"></span></p>
 
-                <label for="selectBank">选择银行：</label>
-                <input id="selectBank" type="text"/>
-                <br/>
-                <p><span></span></p>
-
                 <label for="openBank">开户银行：</label>
                 <input id="openBank" type="text"/>
                 <br/>

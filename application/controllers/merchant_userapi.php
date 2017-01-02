@@ -100,6 +100,18 @@ class Merchant_userapi extends MY_Controller {
 		$ress = $this->db->update("seller",$info,array("seller_id"=>$seller_id));
 		echo json_encode($ress);
 	}
+
+	public function get_sideinfo(){
+		$seller_id = $this->session->userdata('seller_id');
+		$act_count = $this->db->query("select count(*) as count from activity where seller_id={$seller_id} and isreal=1")->row_array();
+		$order_count = $this->db->query("select count(*) as count from sorder where seller_id={$seller_id}")->row_array();
+		$mess_count = $this->db->query("select count(*) as count from message where user_id={$seller_id} and user_type='0' and status='0'")->row_array();
+		$result = array('act_count' => $act_count['count'], 
+			            'order_count' => $order_count['count'],
+			            'mess_count' => $mess_count['count']);
+		echo json_encode($result);
+
+	}
 /*-----------------------------------------以下为私有方法---------------------------------------------------*/
 
 }

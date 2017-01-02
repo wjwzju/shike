@@ -11,43 +11,19 @@ class Shike_get_order4 extends MY_Controller {
 	public function index()
 	{
 
-        // $user_id = $this->session->userdata('user_id');
-		$user_id=1;
-		// $orderwhere = '';
-		// $order_status = $this->input->get('order_status');
-		// $this->out_data['order_status'] = $order_status;
-		// if(!$order_status){
-			
-		// }else{
-		// 	$orderwhere .= " where status=".$order_status;
-		// }
-		// echo $orderwhere;
-		// die();
-        // $users = $this->db->query("select * from user where user_id='1'")->row_array();
-        // echo $users['user_id'];
-
-  //       $this->out_data['user'] = $this->db->query("select * from user where user_id='1'")->row_array();
-		// $this->out_data['sellerinfo'] = $this->db->query("select * from seller where seller_id ={$user_id}")->row_array();
-		// $this->out_data['order_list'] = $this->db->query("select * from sorder".$orderwhere)->result_array();
-		// $this->out_data['sum_order_list'] = $this->db->query("select count(*) as count from sorder")->row_array();
-		// $this->out_data['sum_1_order_list'] = $this->db->query("select count(*) as count from sorder where status=1")->row_array();
-		// $this->out_data['sum_2_order_list'] = $this->db->query("select count(*) as count from sorder where status=2")->row_array();
-		// $this->out_data['sum_3_order_list'] = $this->db->query("select count(*) as count from sorder where status=3")->row_array();
+        $user_id = $this->session->userdata('user_id');
 		$order_id = $this->input->get("order_id");
 		$orderinfo = $this->db->query("select * from sorder where order_id=".$order_id)->row_array();
 		$userinfo = $this->db->query("select * from user where user_id=".$user_id)->row_array();
 		$this->out_data['orderinfo'] = $orderinfo;
 		$this->out_data['userinfo'] = $userinfo;
 		$this->out_data['user_id'] = $user_id;
-		//$this->out_data['shoplist'] = $this->db->query("select * from shop where seller_id=".$user_id)->result_array();
-		//var_dump($this->out_data);die();
 		$this->out_data['con_page'] = 'shike/get_order4';
-		//var_dump($this->out_data);die();
 		$this->load->view('shike_default', $this->out_data);
 	}
 
 	public function submit_order4(){
-		$user_id = "1";
+		$user_id = $this->session->userdata('user_id');
 		$order_id = $this->input->post('order_id');
 		$path = "images/shike/chatlog/".$user_id;
 		if(is_dir($path)){  

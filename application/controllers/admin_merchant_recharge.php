@@ -21,4 +21,21 @@ class admin_merchant_recharge extends MY_Controller {
 		$this->out_data['con_page'] = 'admin/merchant_recharge';
 		$this->load->view('admin_default', $this->out_data);
 	}
+
+	public function search(){
+		$search = $this->input->get("search");
+		$where = " where user_type='0' ";
+		if($search)
+			$where .= " and seller_id='{$search}' ";
+		$page = $this->input->get('per_page') ? $this->input->get('per_page') : 1;
+		$limit = 5;
+		$start = ($page - 1)*$limit;
+		$count = $this->db->query("select count(*) as count from seller_charge_order".$where)->row_array();
+		$count = $count['count'];
+		$the_url = "/admin_merchant_recharge/?search=".$search;
+		$this->out_data['orders'] = $this->db->query("select * from seller_charge_order ".$where." limit {$start},{$limit}")->result_array();
+		$this->out_data['pagin'] = parent::get_pagin($the_url, $count, $limit, 3,  true);
+		$this->out_data['con_page'] = 'admin/merchant_recharge';
+		$this->load->view('admin_default', $this->out_data);
+	}
 }

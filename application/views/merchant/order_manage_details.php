@@ -39,24 +39,36 @@
                     </div>
             <div class="details">
                 <ul>
-                    <li><img src="images/merchant/sj_grzx_bg_sp_default.png" alt=""></li>
+                    <li><img style="width:120px;height:80px" src="<?php echo $order['product_img'];?>" alt=""></li>
                     <li>
                         <p>商品名称：<span><?php echo $order['product_name'];?></span></p>
-                        <p>商品规格：<span>米色.M</span></p>
-                        <p>商品链接：<span><a href="javascript:void(0);"><?php echo $order['product_link'];?></a></span></p>
+                        <p>商品分类：<span><?php if($order['product_classify']==1){
+                                    echo "女装";
+                                }elseif ($order['product_classify']==2) {
+                                    echo "男装";
+                                }elseif ($order['product_classify']==3) {
+                                    echo "鞋包配饰";
+                                }elseif ($order['product_classify']==4) {
+                                    echo "居家生活";
+                                }elseif ($order['product_classify']==5) {
+                                    echo "数码电器";
+                                }elseif ($order['product_classify']==6) {
+                                    echo "母婴儿童";
+                                }elseif ($order['product_classify']==7) {
+                                    echo "食品酒水";
+                                }elseif ($order['product_classify']==8) {
+                                    echo "其他";
+                                }
+                                ?></span></p>
+                        <p>商品规格：<span><?php echo $order['color'];?>.<?php echo $order['size'];?></span></p>
                     </li>
                     <li>
                         <p>店铺名称：<span><?php echo $order['shopname'];?></span></p>
-                        <p>商品分类：<span>女装</span></p>
-                        <p>平台：<span>淘宝</span></p>
+                        <p>平台：<span><?php  echo ($order['platform_id']==1 ? '淘宝':'天猫');?></span></p>
+                        <p>单价：<span><b>&yen;<?php echo $order['unit_price'];?></b>每单拍<b><?php echo $order['buy_sum'];?></b>个</span></p>
                     </li>
                     <li>
-                        <p>单间：<span><b>&yen;100.00</b>每单拍 <b>1</b>个</span></p>
-                        <p>试用总份数：<span><b>5份</b></span></p>
-                        <p>商品运费：<span>全国包邮</span></p>
-                    </li>
-                    <li>
-                        <p>试客：<span>ying****9999</span></p>
+                        <p>试客：<span><?php echo $order['shikename'];?></span></p>
                     </li>
                 </ul>
             </div>
@@ -85,7 +97,7 @@
             <?php else:?>
                 <p class="collapse"></p>
                 <!--申请信息-->
-                <div style="display:none;" class="application_information">
+                <div class="application_information">
                     <!--收藏宝贝与店铺-->
                     <div class="content">
                         <p class="application_title">收藏宝贝与店铺</p>
@@ -93,13 +105,13 @@
                             <div class="left collect">
                                 <p>宝贝收藏截图：</p>
                                 <div class="picture">
-                                    <img src="images/merchant/sj_ddgl_bg_scbb_default.png" alt="">
+                                    <img src="<?php echo $order['product_saveimg'];?>" alt="">
                                 </div>
                             </div>
                             <div class="left collect">
                                 <p>店铺收藏截图</p>
                                 <div class="picture">
-                                    <img src="images/merchant/sj_ddgl_bg_scdp_default.png" alt="">
+                                    <img src="<?php echo $order['shop_saveimg'];?>" alt="">
                                 </div>
                             </div>
                         </div>
@@ -108,9 +120,10 @@
                     <div class="content">
                         <p class="application_title">浏览店铺</p>
                         <div class="browse_shop">
-                            <p class="baby_url">宝贝链接1：http://item.taobao.comitem.taohttp://item.taobao.comitem.taohttp://item.taobao.comitem.taohttp://item.taobao.comitem.taobao.comitem.taobao.comitem.taobao.comitem.taobao.comitem.taobao.comitem.taobao.comitem.taobao.com</p>
-                            <p class="baby_url">宝贝链接1：http://item.taobao.comitem.taobao.comitem.taobao.comitem.taobao.comitem.taobao.comitem.taobao.comitem.taobao.comitem.taobao.com</p>
-                            <p class="baby_url">宝贝链接1：http://item.taobao.comitem.taobao.comitem.taobao.comitem.taobao.comitem.taobao.comitem.taobao.comitem.taobao.comitem.taobao.com</p>
+                            <p class="baby_url">宝贝链接1：<?php echo $order['product_url1'];?></p>
+                            <p class="baby_url">宝贝链接2：<?php echo $order['product_url2'];?></p>
+                            <p class="baby_url">宝贝链接3：<?php echo $order['product_url3'];?></p>
+                            <p class="baby_url">宝贝链接4：<?php echo $order['product_url4'];?></p>
                         </div>
                     </div>
                     <!--客服聊天-->
@@ -119,12 +132,7 @@
                         <div class="serviceChat">
                             <div class="left collect">
                                 <div class="picture">
-                                    <img src="images/merchant/sj_ddgl_bg_ltjt1_default.png" alt="" >
-                                </div>
-                            </div>
-                            <div class="left collect">
-                                <div class="picture">
-                                    <img src="images/merchant/sj_ddgl_bg_ltjt2_default.png" alt="">
+                                    <img src="<?php echo $order['chatlog_img'];?>" alt="">
                                 </div>
                             </div>
                         </div>
@@ -133,9 +141,9 @@
                     <div class="content">
                         <p class="application_title">淘宝订单</p>
                         <div class="taobao_order">
-                            <p><span>订单号：12345678978943</span><span>实际付款金额：&yen;123.00</span></p>
+                            <p><span>订单号：<?php echo $order['outer_orderid'];?></span><span>实际付款金额：&yen;<?php echo $order['real_paymoney'];?></span></p>
                             <div>
-                                <img src="images/merchant/sj_ddgl_bg_tbdd_default.png" alt="">
+                                <img src="<?php echo $order['orderdetail_img'];?>" alt="">
                             </div>
                         </div>
                     </div>
@@ -147,16 +155,13 @@
                 <!--评价信息-->
                 <h1>评价信息</h1>
                 <p class="collapse_evaluate"></p>
-                <div style="display:none;" class="evaluate_information">
+                <div class="evaluate_information">
                     <!--评价内容-->
                     <div class="content">
                         <p class="application_title">评价内容</p>
                         <div class="evaluate_content">
                           <p>
-                              yingyignyigngiigjigigggggggggggggggggggggggggggggggggg
-                              gggggggggggggggggggggggggggggggggggggggggggggggggggg
-                              ggggggggggggggggggggggggggggggggggggggggggggggggggggggg
-                              ggggggggggggggggggggggggggggggggggggggggggggggggggggggg
+                              <?php echo $order['comment_detail'];?>
                           </p>
                         </div>
                     </div>
@@ -165,11 +170,11 @@
                         <p class="application_title">晒单照片</p>
                         <div class="show_picture">
                             <ul>
-                                <li><img src="../../images/sj_ddgl_bg_sdzp3_default.png" alt=""></li>
-                                <li><img src="../../images/sj_ddgl_bg_sdzp3_default.png" alt=""></li>
-                                <li><img src="../../images/sj_ddgl_bg_sdzp3_default.png" alt=""></li>
-                                <li><img src="../../images/sj_ddgl_bg_sdzp3_default.png" alt=""></li>
-                                <li><img src="../../images/sj_ddgl_bg_sdzp3_default.png" alt=""></li>
+                                <li><img src="<?php echo $order['shaidan1_img'];?>" alt=""></li>
+                                <li><img src="<?php echo $order['shaidan2_img'];?>" alt=""></li>
+                                <li><img src="<?php echo $order['shaidan3_img'];?>" alt=""></li>
+                                <li><img src="<?php echo $order['shaidan4_img'];?>" alt=""></li>
+                                <li><img src="<?php echo $order['shaidan5_img'];?>" alt=""></li>
                             </ul>
                         </div>
                     </div>
@@ -178,7 +183,7 @@
                     <div class="content">
                         <p class="application_title">淘宝评价截图</p>
                         <div class="taobao_evaluate">
-                            <img src="../../images/sj_ddgl_bg_pjjt_default.png" alt="">
+                            <img src="<?php echo $order['comment_img'];?>" alt="">
                         </div>
                     </div>
                 <?php endif;?>
@@ -197,11 +202,12 @@
                             <th>试客</th>
                         </tr>
                         <tr>
-                            <td>2016.03.03</td>
-                            <td>&yen;152.00</td>
-                            <td>包邮</td>
-                            <td>&yen;152.00</td>
-                            <td>ying****1234</td>
+                            <td><?php echo substr($order['time'],0,10);?></td>
+                            <td>&yen;<?php echo $order['real_paymoney'];?></td>
+                            <td><?php if ($order['freight']==0){echo "全国包邮";}else{echo $order['freight'].'元';}
+                            ?></td>
+                            <td>&yen;<?php echo $order['real_paymoney']-$order['freight'];?></td>
+                            <td><?php echo $order['shikename'];?></td>
                         </tr>
                     </table>
                 </div>
@@ -247,11 +253,11 @@
                 <!--订单状态-->
                 <div class="order_status">
                     <p>订单状态：<span>待收货</span></p>
-                    <p>物流公司：<b>申通快递</b></p>
-                    <p>运单号：<b>123456789</b></p>
+                    <p>物流公司：<b><?php echo $order['wuliu'];?></b></p>
+                    <p>运单号：<b><?php echo $order['yundan'];?></b></p>
                     <p>联系客服：<img src="images/merchant/sj_grzx_icon_qq_default.png" alt="" onclick="window.open('http://wpa.qq.com/msgrd?v=3&uin=<?php echo $qq;?>&site=qq&menu=yes')"></p>
                 </div>
-            <?php elseif($order['status'] == 8):?>
+            <?php elseif($order['status'] == 7):?>
                 <!--订单状态-->
                 <div class="order_status">
                     <p>订单状态：<span>已完成</span></p>
@@ -334,9 +340,9 @@
 <script src="js/merchant/modal_scrollbar.js"></script>
 <script>
     $(function(){
-        $('#header').load("../common/merchant_header.html");
-        $('#footer').load("../common/footer.html");
-        $('#left_nav').load("../common/left_nav.html");
+        // $('#header').load("../common/merchant_header.html");
+        // $('#footer').load("../common/footer.html");
+        // $('#left_nav').load("../common/left_nav.html");
 
         $('.collapse').bind('click',function(){
             $('.application_information').slideToggle(500);

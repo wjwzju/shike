@@ -44,3 +44,6 @@
         </ul>
     </div>
 </div>
+<script>
+$(function(){alert(1);});
+</script>

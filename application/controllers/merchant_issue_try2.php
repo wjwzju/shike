@@ -19,27 +19,6 @@ class Merchant_issue_try2 extends MY_Controller {
 			echo "不可允许的访问";
 			return;
 		}
-		
-		// $orderwhere = '';
-		// $order_status = $this->input->get('order_status');
-		// $this->out_data['order_status'] = $order_status;
-		// if(!$order_status){
-			
-		// }else{
-		// 	$orderwhere .= " where status=".$order_status;
-		// }
-		// echo $orderwhere;
-		// die();
-        // $users = $this->db->query("select * from user where user_id='1'")->row_array();
-        // echo $users['user_id'];
-
-  //       $this->out_data['user'] = $this->db->query("select * from user where user_id='1'")->row_array();
-		// $this->out_data['sellerinfo'] = $this->db->query("select * from seller where seller_id ={$user_id}")->row_array();
-		// $this->out_data['order_list'] = $this->db->query("select * from sorder".$orderwhere)->result_array();
-		// $this->out_data['sum_order_list'] = $this->db->query("select count(*) as count from sorder")->row_array();
-		// $this->out_data['sum_1_order_list'] = $this->db->query("select count(*) as count from sorder where status=1")->row_array();
-		// $this->out_data['sum_2_order_list'] = $this->db->query("select count(*) as count from sorder where status=2")->row_array();
-		// $this->out_data['sum_3_order_list'] = $this->db->query("select count(*) as count from sorder where status=3")->row_array();
 		$this->out_data['seller_id'] = $user_id;
 		$this->out_data['shoplist'] = $this->db->query("select * from shop where seller_id=".$user_id)->result_array();
 		$this->out_data['activity'] = $this->db->query("select * from activity where act_id=".$this->out_data['act_id'])->row_array();
@@ -50,6 +29,7 @@ class Merchant_issue_try2 extends MY_Controller {
 	}
 
 	public function update_fake_activity2(){
+		
 		$act_id = $this->input->post('act_id');
 		$commodity_name = $this->input->post('commodity_name');
 		$shop_url = $this->input->post('shop_url');
@@ -60,8 +40,12 @@ class Merchant_issue_try2 extends MY_Controller {
 		$unit_price = $this->input->post('unit_price');
 		$buy_sum = $this->input->post('buy_sum');
 		$freight = $this->input->post('freight');
+		$margin = $this->input->post('margin');
+		$total_money = $margin*5*1.05;
+		$guarantee = $margin*5*0.05;
+		$deposit = $margin*5;
         $data = $this->get_act_detail($shop_url);
-		$info = array("product_name" => $commodity_name,"product_link" => $shop_url,"product_classify" => $commodity_classify,"picture_url" => $commodity_picture,"color" => $thecolor,"size" => $thesize,"unit_price" => $unit_price,"buy_sum" => $buy_sum,"freight" => $freight,"product_details" =>$data);
+		$info = array("product_name" => $commodity_name,"product_link" => $shop_url,"product_classify" => $commodity_classify,"picture_url" => $commodity_picture,"color" => $thecolor,"size" => $thesize,"unit_price" => $unit_price,"buy_sum" => $buy_sum,"freight" => $freight,"product_details" =>$data, "margin" => $margin, "total_money" => $total_money,"guarantee" => $guarantee, "deposit" => $deposit);
 		$res = $this->db->update("activity",$info,array("act_id"=>$act_id));
 		echo json_encode($res);
 

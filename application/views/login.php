@@ -1,79 +1,85 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<base href="<?php echo base_url(); ?>">
-
-	<title>试客后台</title>
-
-	<!-- Bootstrap core CSS -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/common.css" rel="stylesheet">
-
-	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
-	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-	<![endif]-->
+    <meta charset="UTF-8">
+    <base href="<?php echo base_url(); ?>">
+    <title>欢迎登录</title>
+    <link rel="stylesheet" href="css/shike/reset.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
-
-
-
 <body>
+<header id="header"></header>
+<section id="section" style="background-color: #182126;">
+    <div class="login_content">
+        <div class="login_box right">
+            <div class="password_login">
+                <h1 class="left">密码登录</h1>
+                <p class="right">
+                    <a href="../register/shike_registration.html">注册试客</a>
+                    <span>/</span>
+                    <a href="../register/business_registration.html">注册商家</a>
+                </p>
+            </div>
+            <ul>
+                <li class="account"><input type="text" placeholder="账号/手机号" id="account"/></li>
+                <li class="password"><input type="password" placeholder="密码" id="password"/></li>
+            </ul>
+            <p class="error" id="inputerror"><span></span></p>
+            <p class="login_btn">
+                <input type="button" value="登录" onclick="login()" />
+            </p>
+            <div class="forget_password">
+                <a href="forget_password.html">忘记密码</a>
+                <span>/</span>
+                <span>联系客服：</span>
+                <img src="images/shike/login_button_QQ_default.png" alt="" onclick="window.open('http://wpa.qq.com/msgrd?v=3&uin=<?php echo $qq;?>&site=qq&menu=yes')">
+            </div>
+        </div>
+    </div>
+</section>
+<footer id="footer"></footer>
+<script src="js/shike/jquery-1.10.2.js"></script>
+<script>
+    $(function(){
+        $('#header').load('../common/login_header.html');
+        $('#footer').load('../common/footer.html');
+    })
+    function login(){
+        var name = $("#account").val();
+        var password = $("#password").val();
+        if(name === '' || password === ''){
+            $("#inputerror").text("请输入用户名和密码");
+            return;
+        }else{
+            $.ajax({
+                url : 'login/check_login',
+                type : "POST",
+                datatype : "json",
+                cache : false,
+                timeout : 20000,
+                data : {name:name,password:password},
+                success : function (result){
+                    console.log(result);
+                    result = $.parseJSON(result);
+                    if(result.status){
+                    	if(result.seller_id){
+                        	location.href = '/merchant_personal';
+                    	}else{
+                            location.href = '/shike_personal';
+                    	}
+                    }else{
+                        $("#inputerror").text("用户名或密码不正确");
+                        return;
+                    }
+                },
+                error : function(XMLHttpRequest, textStatus){
+                    console.log(XMLHttpRequest);
+                    console.log(textStatus);
+                }
+            })
+        }
 
-<div class="container">
-	<div class="row">
-		<div class="col-md-4 col-md-offset-4">
-			<div class="login-panel panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">试客后台</h3>
-				</div>
-				<div class="panel-body">
-					<form role="form">
-						<fieldset>
-							<div class="form-group">
-								<input class="form-control" placeholder="请输入用户名" name="name" type="input" required autofocus>
-							</div>
-							<div class="form-group">
-								<input class="form-control" placeholder="请输入密码" name="password" type="password" required>
-							</div>
-							<button type="button" onclick="login()" class="btn btn-lg btn-success btn-block">登录</button>
-						</fieldset>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-
+    }
+</script>
 </body>
 </html>
-
-<script src="js/jquery.js"></script>
-<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-<script src="js/common.js"></script>
-<script>
-	
-function login(){
-	var name = $.trim($('input[name=name]').val());
-	var password = $.trim($('input[name=password]').val());
-	if(name === '' || password === ''){
-		alert('请输入用户名和密码');
-	}else{
-		$.post(admin.url+'login/check_login',
-		{'name':name, 'password':password},
-		function (result){
-			result = $.parseJSON(result);
-			if(result.status){
-				location.href = admin.url;
-			}else{
-				alert(result.msg);
-			}
-		})
-	}
-}
-
-</script>
