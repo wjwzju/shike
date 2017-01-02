@@ -71,7 +71,7 @@
                     <li><span>联系方式</span></li>
                     <li>
                         <span>QQ:<?php echo $userinfo['user_qq'];?></span><br/>
-                        <span>手机：<?php echo $userinfo['phone'];?></span>
+                        <span>手机：<?php echo substr($userinfo['phone'], 0,3);?>****<?php echo substr($userinfo['phone'], -4);?></span>
                     </li>
                     <li><a href="/shike_set_userqq">修改</a><br/><a href="/shike_set_usertel">修改</a></li>
                 </ul>

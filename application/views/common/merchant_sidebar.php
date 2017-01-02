@@ -9,8 +9,8 @@
         <a  href="javascript:void(0);">试用管理</a>
         <ul>
             <li><a href="/merchant_issue_try">发布试用</a></li>
-            <li><a href="/merchant_activity_manage">活动管理</a></li>
-            <li><a href="/merchant_order_manage">试用订单管理</a></li>
+            <li><a id="act_num" href="/merchant_activity_manage">活动管理（0）</a></li>
+            <li><a id="order_num" href="/merchant_order_manage">试用订单管理（0）</a></li>
         </ul>
     </div>
     <div class="title account_information">
@@ -30,6 +30,27 @@
         </ul>
     </div>
     <div class="title message_center">
-        <a href="/merchant_message_center">消息中心</a>
+        <a id="message_num" href="/merchant_message_center">消息中心（0）</a>
     </div>
 </div>
+<script>
+    $(function(){
+        $.ajax({
+            url : '/merchant_userapi/get_sideinfo',
+            data:{},
+            type : 'post',
+            dataType : 'json',
+            cache : false,
+            success : function (result){
+                $("#act_num").text("活动管理（"+result.act_count+"）");
+                $("#order_num").text("试用订单管理（"+result.order_count+"）");
+                $("#message_num").text("消息中心（"+result.mess_count+"）");
+            },
+            error : function (XMLHttpRequest, textStatus){
+                console.log("insert_fake_activity false");
+                console.log(XMLHttpRequest);
+                console.log(textStatus);
+            }
+        })
+    });
+</script>

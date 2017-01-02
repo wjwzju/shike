@@ -16,20 +16,25 @@
 
     <div class="edit_merchant_block" style="position:absolute;width:800px;height:300px;border:1px solid;background:white;z-index:101;top:500px;right:0;display:none">
         <div style="overflow:hidden">
-            <div style="width:300px;float:left"><p id="edit_merchant_id" style="font-size:30px;width:270px;margin:auto">发送对象</p></div>
-            <!-- <div style="width:350px;float:left"> -->
-                <select style="font-size:30px;width:470px;margin:auto;border:1px solid"><option value ="volvo">Volvo</option><option value ="saab">Saab</option>
-                </select>
-                
-            <!-- </div> -->
+            <div style="width:300px;float:left"><p id="edit_merchant_id" style="font-size:30px;width:270px;margin:auto">发送对象</p>
+            </div>
+            <div style="width:350px;float:left">
+                <select style="height:40px;border:1px solid;width:100%">
+                    <option value ="volvo" style="height:40px;border:1px solid;width:100%">Volvo</option>
+                    <option value ="saab" style="height:40px;border:1px solid;width:100%">Saab</option>
+                </select>    
+            </div>
         </div>
         <div style="overflow:hidden">
-            <div style="width:300px;float:left"><p id="edit_account" style="font-size:30px;width:250px;margin:auto">账号:</p></div>
-            <div style="width:120px;float:left"><p style="font-size:30px;width:120px;margin:auto">手机号:</p></div>
-            <div style="width:370px;float:left"><input id="edit_merchant_phone" type="text" style="height:40px;border:1px solid;width:100%"></div>
+            <div style="width:120px;float:left">
+                <p id="edit_account" style="font-size:30px;width:250px;margin:auto">账号:</p>
+            </div>
+            <div style="width:370px;float:left"><input id="edit_merchant_account" type="text" style="height:40px;border:1px solid;width:100%">
+            </div>
         </div>
         <div style="overflow:hidden">
-            <div style="width:120px;float:left"><p style="font-size:30px;width:90px;margin:auto">QQ号:</p></div>
+            <div style="width:120px;float:left">
+                <p style="font-size:30px;width:90px;margin:auto">QQ号:</p></div>
             <div style="width:370px;float:left"><input id="edit_merchant_qq" type="text" style="height:40px;border:1px solid;width:100%"></div>
         </div>
         <div style="overflow:hidden">

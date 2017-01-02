@@ -72,7 +72,7 @@
                 <p><span></span></p>
                 <label for="mobile_phone">手机</label>
                 <input id="mobile_phone" name="chargetel" type="text"/>
-                <p><span></span></p>
+                <p><span id="tel_error"></span></p>
 
             </form>
         </div>
@@ -97,7 +97,7 @@
             <p>如需更换店铺，请联系客服QQ：54545487</p>
         </div>
         <div class="modal_submit">
-            <input class="confirm" type="button" value="确定"/>
+            <input class="confirm" type="button" value="确定" onclick="check_ok()" />
         </div>
     </div>
     <div class="mask_layer"></div>
@@ -116,7 +116,7 @@
             <form class="shop_information" enctype="multipart/form-data" method="post" action="/merchant_store/submit_new_shop" onsubmit="return check_form()">
                 <label for="shop_url">店铺首页网址：</label>
                 <input id="shop_url" name="shop_url" type="text"/>
-                <span>店铺链接不正确</span>
+                <span id="shoperror"></span>
                 <br/>
                 <label for="shop_name">店铺名称：</label>
                 <input id="shop_name" name="shop_name" type="text"/>
@@ -136,9 +136,9 @@
                 <br/>
                 <p>请先上传店铺LOGO，要求：尺寸为260x260，大小不超过1M。</p>
                 <label for="auth_code">验证码：</label>
-                <input id="auth_code" type="button" name="auth_code" value="FSE251"/>
-                <input class="clone" type="button" value="复制"/>
-                <span></span>
+                <input id="auth_code" type="button" name="auth_code" value=<?php echo $pwd;?> />
+                <input class="clone" type="button" value="复制" onclick="clip_to_board('<?php echo $pwd;?>')"/>
+                <span id="clip_ok"></span>
                 <br/>
                 <p>1、将验证码加到您的店铺里某个上架商品的标题上，如下图</p>
                 <p class="picture"><span><img src="images/merchant/sj_dpgl_tc_bg_jt_default.png" alt=""></span></p>
@@ -211,6 +211,10 @@
             $("#qq_error").text("负责人QQ不能为空");
             return;
         }
+        if(!chargetel){
+            $("#tel_error").text("负责人手机号不能为空");
+            return;
+        }
         $.ajax({
             url : admin.url+'merchant_store/change_content',
             type : "POST",
@@ -248,35 +252,49 @@
         }
         return true;
     }
-    // function submit_new_shop(){
-    //     var shop_link = $("#shop_url").val();
-    //     var shop_name = $("#shop_name").val();
-    //     var wangwang = $("#wangwang").val();
-    //     // var shop_logo = $("#shop_logo").val();
-    //     var good_url = $("#good_url").val();
-    //     var chargeqq = $("#principal_qq").val();
-    //     var chargewx = $("#principal_weChat").val();
-    //     var chargetel = $("#principal_phone").val();
-    //     $.ajax({
-    //         url : admin.url+'merchant_store/submit_new_shop',
-    //         type : "POST",
-    //         datatype : "json",
-    //         cache : false,
-    //         timeout : 20000,
-    //         data : {shop_link:shop_link, shop_name:shop_name, wangwang:wangwang, 
-    //                 good_url:good_url, chargeqq:chargeqq,
-    //                 chargewx:chargewx, chargetel:chargetel},
-    //         success : function (result){
-    //             location.reload();
+    function submit_new_shop(){
+        var shop_link = $("#shop_url").val();
+        var shop_name = $("#shop_name").val();
+        var wangwang = $("#wangwang").val();
+        // var shop_logo = $("#shop_logo").val();
+        var good_url = $("#good_url").val();
+        var chargeqq = $("#principal_qq").val();
+        var chargewx = $("#principal_weChat").val();
+        var chargetel = $("#principal_phone").val();
+        alert(shop_link);
+        $.ajax({
+            url : admin.url+'merchant_store/submit_new_shop',
+            type : "POST",
+            datatype : "json",
+            cache : false,
+            timeout : 20000,
+            data : {shop_link:shop_link, shop_name:shop_name, wangwang:wangwang, 
+                    good_url:good_url, chargeqq:chargeqq,
+                    chargewx:chargewx, chargetel:chargetel},
+            success : function (result){
+                location.reload();
 
-    //         },
-    //         error : function(XMLHttpRequest, textStatus){
-    //             console.log(XMLHttpRequest);
-    //             console.log(textStatus);
-    //         }
-    //     })
+            },
+            error : function(XMLHttpRequest, textStatus){
+                console.log(XMLHttpRequest);
+                console.log(textStatus);
+            }
+        })
+    }
 
-    // }
+    function clip_to_board(o){
+        if (window.clipboardData) // IE
+        {
+            window.clipboardData.setData("Text",o);
+            $("#clip_ok").text("复制成功");
+        } 
+        return;
+    }
+
+    function check_ok(){
+        $('.binding_modal').css('display','none');
+        return;
+    }
 </script>
 </body>
 </html>

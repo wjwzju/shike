@@ -44,7 +44,7 @@
                 </div>
                 <div class="detalis">
                     <ul>
-                        <li><img src="images/merchant/order_<?php echo $v['order_id'];?>.png" alt=""></li>
+                        <li><img src="<?php echo $v['product_img'];?>" alt=""></li>
                         <li>
                             <p class="clothes_name"><?php echo $v['product_name'];?>
                             <p class="two"><span>店铺：</span><?php echo $v['shopname'];?></p>
@@ -239,9 +239,9 @@
             //console.log(obj);
             ydcountdown(leftseconds,obj);
         }
-        $('#header').load("../common/merchant_header.html");
-        $('#footer').load("../common/footer.html");
-        $('#left_nav').load("../common/left_nav.html");
+        // $('#header').load("../common/merchant_header.html");
+        // $('#footer').load("../common/footer.html");
+        // $('#left_nav').load("../common/left_nav.html");
 //        标题的点击事件
         $('.order').bind('click',function(){
             $(this).find('a').addClass('personal_active');

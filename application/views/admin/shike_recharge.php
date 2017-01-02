@@ -22,10 +22,15 @@
     <div class="rightinfo">
     
         <ul class="seachform">
-          <li><label>商品名</label><input name="" type="text" class="scinput" /></li>
-          <li><label>&nbsp;</label><input name="" type="button" class="scbtn" value="查询"/></li>
+          <li><label>会员名</label><input name="" type="text" class="scinput" /></li>
+          <li><label>&nbsp;</label><input name="" type="button" class="scbtn" value="查询" onclick="search()"/></li>
         </ul>
-    
+    <script>
+        function search(){
+            var account = $(".scinput").val();
+            location.href="/admin_shike_recharge/search?search="+account;
+        }
+    </script>
     <div class="formtitle1"><span>会员充值记录</span></div>
     <table class="tablelist">
         <thead>

@@ -15,7 +15,7 @@
                 <li>您的位置：</li>
                 <li><a href="/shike_personal">个人中心</a></li>
                 <li><img src="images/shike/icon_arrow_default.png" alt=""></li>
-                <li><a href="javascript:void(0)">使用管理</a></li>
+                <li><a href="/shike_try_winningManage">使用管理</a></li>
                 <li><img src="images/shike/icon_arrow_default.png" alt=""></li>
                 <li>领取下单</li>
             </ul>
@@ -88,7 +88,6 @@
                 </div>
             </div>
             <input type="hidden" name="order_id" value="<?php echo $orderinfo['order_id']?>">
-            <input type="button" onclick="test()" value="test">
             <p class="step_btn">
                 <input  onclick="location.href='shike_get_order?order_id=<?php echo $orderinfo['order_id']?>'" type="button" value="上一步">
                 <input  class="next_step" type="submit" value="下一步">
@@ -101,8 +100,8 @@
 <script src="js/shike/jquery-1.10.2.js"></script>
 <script>
     $(function(){
-        $('#header').load("../common/merchant_header.html");
-        $('#footer').load("../common/footer.html");
+        // $('#header').load("../common/merchant_header.html");
+        // $('#footer').load("../common/footer.html");
 
         $('#second_step').bind('click',function(){
             $('.second_step .example_images').slideToggle();
@@ -125,13 +124,6 @@
             return false;
         }
         return true;
-    }
-    function test(){
-        if($("#product_saveimg").val()=='' || $("#shop_saveimg").val()==''){
-            alert(2);
-            return;
-        }
-       alert(1);
     }
 </script>
 </body>

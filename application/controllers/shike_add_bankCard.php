@@ -30,7 +30,8 @@ class Shike_add_bankCard extends MY_Controller {
 			          'banktype' => $banktype,
 			          'branchbank' => $branchbank,
 			          'banknum' => $banknum,
-			          'type' => "1");
+			          'type' => "1",
+			          'time' => date('Y-m-d H:i:s',time()));
 		$this->db->insert('bankbind', $info);
 	}
 }

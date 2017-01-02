@@ -46,38 +46,38 @@
                 </li>
             </ul>
             <div class="need_pay">
-                <p class="one">您已选择<b>12</b>个月会员，有效期至<b>2012.12.12</b></p>
+                <p class="one">您已选择<b>12</b>个月会员，有效期至<b><?php echo $one_year_end;?></b></p>
                 <p class="two">需要支付:<span>&yen;4000.00</span></p>
-                <p class="three" style = "display:none">您已选择<b>24</b>个月会员，有效期至<b>2012.12.12</b></p>
+                <p class="three" style = "display:none">您已选择<b>24</b>个月会员，有效期至<b><?php echo $two_year_end;?></b></p>
                 <p class="four" style = "display:none">需要支付:<span>&yen;7200.00</span></p>
-                <p class="five" style = "display:none">您已选择<b>36</b>个月会员，有效期至<b>2012.12.12</b></p>
+                <p class="five" style = "display:none">您已选择<b>36</b>个月会员，有效期至<b><?php echo $three_year_end;?></b></p>
                 <p class="six" style = "display:none">需要支付:<span>&yen;9600.00</span></p>
             </div>
             <h1>请选择银行</h1>
             <table>
                 <tr>
                     <td class="bank">
-                        <img src="../../images/sj_zhxx_bg_bdyhk_nyyh_five_default.png" alt="">
+                        <img src="images/merchant/sj_zhxx_bg_bdyhk_nyyh_five_default.png" alt="">
                     </td>
                     <td class="bank">
-                        <img src="../../images/sj_zhxx_bg_bdyhk_nyyh_five_default.png" alt="">
+                        <img src="images/merchant/sj_zhxx_bg_bdyhk_nyyh_five_default.png" alt="">
                     </td>
                     <td class="bank">
-                        <img src="../../images/sj_zhxx_bg_bdyhk_nyyh_five_default.png" alt="">
+                        <img src="images/merchant/sj_zhxx_bg_bdyhk_nyyh_five_default.png" alt="">
                     </td>
                     <td class="bank">
-                        <img src="../../images/sj_zhxx_bg_bdyhk_nyyh_five_default.png" alt="">
+                        <img src="images/merchant/sj_zhxx_bg_bdyhk_nyyh_five_default.png" alt="">
                     </td>
                 </tr>
                 <tr>
                     <td class="bank">
-                        <img src="../../images/sj_zhxx_bg_bdyhk_nyyh_five_default.png" alt="">
+                        <img src="images/merchant/sj_zhxx_bg_bdyhk_nyyh_five_default.png" alt="">
                     </td>
                     <td class="bank">
-                        <img src="../../images/sj_zhxx_bg_bdyhk_nyyh_five_default.png" alt="">
+                        <img src="images/merchant/sj_zhxx_bg_bdyhk_nyyh_five_default.png" alt="">
                     </td>
                     <td class="bank">
-                        <img src="../../images/sj_zhxx_bg_bdyhk_nyyh_five_default.png" alt="">
+                        <img src="images/merchant/sj_zhxx_bg_bdyhk_nyyh_five_default.png" alt="">
                     </td>
                     <td class="bank">
                         <a href="javascript:void(0);">选择其他</a>
@@ -85,7 +85,7 @@
                 </tr>
             </table>
             <p class="confirm_btn">
-                <input id="confirm_payment" type="button" value="确认付款"/>
+                <input id="confirm_payment" type="button" value="确认付款" onclick="pay_recharge()"/>
             </p>
             <div class="warm_prompt">
                 <h1>温馨提示：</h1>
@@ -101,13 +101,14 @@
     </div>
 </section>
 <footer id="footer"></footer>
+<input type="hidden" id="hidden_recharge">
 <script src="js/merchant/jquery-1.10.2.js"></script>
 <script src="js/merchant/modal_scrollbar.js"></script>
 <script>
     $(function(){
-        $('#header').load("../common/merchant_header.html");
-        $('#footer').load("../common/footer.html");
-        $('#left_nav').load("../common/left_nav.html");
+        // $('#header').load("../common/merchant_header.html");
+        // $('#footer').load("../common/footer.html");
+        // $('#left_nav').load("../common/left_nav.html");
 
         // $('.select').bind('click',function(){
         //     $(this).css('border','1px solid #e61e28');
@@ -148,7 +149,27 @@
             $('.five').css('display','block');
             $('.six').css('display','block');
         }
+        $('#hidden_recharge').val(o);
     }
+    function pay_recharge(){
+        var recharge_year = $("#hidden_recharge").val();
+        $.ajax({
+            url : admin.url+'Merchant_member_recharge/pay_recharge',
+            type : "POST",
+            datatype : "json",
+            cache : false,
+            timeout : 20000,
+            data : {recharge_year:recharge_year},
+            success : function (result){
+                location.href=admin.url+"merchant_member_manage";
+            },
+            error : function(XMLHttpRequest, textStatus){
+                console.log(XMLHttpRequest);
+                console.log(textStatus);
+            }
+        })
+    }
+
 </script>
 </body>
 </html>

@@ -19,26 +19,6 @@ class Merchant_issue_try5 extends MY_Controller {
 			echo "不可允许的访问";
 			return;
 		}
-		// $orderwhere = '';
-		// $order_status = $this->input->get('order_status');
-		// $this->out_data['order_status'] = $order_status;
-		// if(!$order_status){
-			
-		// }else{
-		// 	$orderwhere .= " where status=".$order_status;
-		// }
-		// echo $orderwhere;
-		// die();
-        // $users = $this->db->query("select * from user where user_id='1'")->row_array();
-        // echo $users['user_id'];
-
-  //       $this->out_data['user'] = $this->db->query("select * from user where user_id='1'")->row_array();
-		// $this->out_data['sellerinfo'] = $this->db->query("select * from seller where seller_id ={$user_id}")->row_array();
-		// $this->out_data['order_list'] = $this->db->query("select * from sorder".$orderwhere)->result_array();
-		// $this->out_data['sum_order_list'] = $this->db->query("select count(*) as count from sorder")->row_array();
-		// $this->out_data['sum_1_order_list'] = $this->db->query("select count(*) as count from sorder where status=1")->row_array();
-		// $this->out_data['sum_2_order_list'] = $this->db->query("select count(*) as count from sorder where status=2")->row_array();
-		// $this->out_data['sum_3_order_list'] = $this->db->query("select count(*) as count from sorder where status=3")->row_array();
 		$this->out_data['seller_id'] = $user_id;
 		$this->out_data['sellerinfo'] = $this->db->query("select * from seller where seller_id ={$user_id}")->row_array();
 		$this->out_data['activity_list'] = $this->db->query("select * from activity where act_id=".$this->out_data['act_id'])->row_array();
@@ -50,36 +30,30 @@ class Merchant_issue_try5 extends MY_Controller {
 		$this->load->view('merchant_default', $this->out_data);
 	}
 
-	public function update_fake_activity4(){
+	public function check_pay(){
+		$pwd = $this->input->post('pwd');
 		$act_id = $this->input->post('act_id');
-		$apply_amount = $this->input->post('apply_amount');
-		// $commodity_name = $this->input->post('commodity_name');
-		// $shop_url = $this->input->post('shop_url');
-		// $commodity_classify = $this->input->post('commodity_classify');
-		// $commodity_picture = $this->input->post('commodity_picture');
-		// $thecolor = $this->input->post('thecolor');
-		// $thesize = $this->input->post('thesize');
-		// $unit_price = $this->input->post('unit_price');
-		// $buy_num = $this->input->post('buy_num');
-		// $freight = $this->input->post('freight');
-		$info = array("apply_amount" => $apply_amount);
-		$res = $this->db->update("activity",$info,array("act_id"=>$act_id));
-		echo json_encode($res);
-
-	}
-	public function update_confirm_ship(){
-		$wuliu = $this->input->post('wuliu');
-		$yundan = $this->input->post('yundan');
-		$order_id = $this->input->post('order_id');
-		$info = array("wuliu"=>$wuliu,"yundan"=>$yundan,'status'=>2);
-		$res = $this->db->update("sorder",$info,array("order_id"=>$order_id));
-		echo json_encode($res);
+		$seller_id=$this->session->userdata('seller_id');
+		$seller_info=$this->db->query("select * from seller where seller_id={$seller_id}")->row_array();
+		if ($seller_info["paypw"] != md5($pwd)){
+            $res = 0;
+            echo json_encode($res);
+		}else{
+		    $avail = $this->input->post('avail');
+		    $need_pay = $this->input->post('need_pay');
+		    $freeze_deposit = $seller_info["freeze_deposit"];
+            $info = array('avail_deposit' => $avail-$need_pay,
+            	          'freeze_deposit' => $freeze_deposit+$need_pay);
+		    $this->db->update("seller",$info,array("seller_id"=>$seller_id));
+            $this->db->update("activity",array('status' => 2),array("act_id"=>$act_id));
+		    $res = 1;
+		    echo json_encode($res);
+	    }
 	}
 
-	public function update_shenhe(){
-		$order_id = $this->input->post('order_id');
-		$info = array('status'=>3);
-		$res = $this->db->update("sorder",$info,array("order_id"=>$order_id));
+	public function cancel_act(){
+		$act_id = $this->input->post('act_id');
+		$res = $this->db->update("activity",array('status' => 5),array("act_id"=>$act_id));
 		echo json_encode($res);
 	}
 }

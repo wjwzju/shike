@@ -14,16 +14,16 @@
 	    <div class="place">
         <span>位置：</span>
         <ul class="placeul">
-            <li><a href="#">首页</a></li>
-            <li><a href="#">订单列表</a></li>
+            <li><a href="javasrcript:void(0)">首页</a></li>
+            <li><a href="/admin_merchant_recharge">会员充值记录</a></li>
         </ul>
     </div>
     
     <div class="rightinfo">
     
 	    <ul class="seachform">
-		  <li><label>商品名</label><input name="" type="text" class="scinput" /></li>
-		  <li><label>&nbsp;</label><input name="" type="button" class="scbtn" value="查询"/></li>
+		  <li><label>会员名</label><input name="" type="text" class="scinput" /></li>
+		  <li><label>&nbsp;</label><input name="" type="button" class="scbtn" value="查询" onclick="search()"/></li>
 	    </ul>
     
 	<div class="formtitle1"><span>会员充值记录</span></div>
@@ -80,6 +80,12 @@
     <script type="text/javascript">
 	$('.tablelist tbody tr:odd').addClass('odd');
 	</script>
+    <script>
+        function search(){
+            var account = $(".scinput").val();
+            location.href="/admin_merchant_recharge/search?search="+account;
+        }
+    </script>
 
 </body>
 

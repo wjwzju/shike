@@ -43,7 +43,12 @@
                         <select id="commodity_classify">
                             <option value ="1" <?php if($activity['product_classify'] == '1') echo "selected='selected'"?>>女装</option>
                             <option value ="2" <?php if($activity['product_classify'] == '2') echo "selected='selected'"?>>男装</option>
-                            <option value="3" <?php if($activity['product_classify'] == '3') echo "selected='selected'"?>>美妆</option>
+                            <option value ="3" <?php if($activity['product_classify'] == '3') echo "selected='selected'"?>>鞋包配饰</option>
+                            <option value ="4" <?php if($activity['product_classify'] == '4') echo "selected='selected'"?>>居家生活</option>
+                            <option value ="5" <?php if($activity['product_classify'] == '5') echo "selected='selected'"?>>数码电器</option>
+                            <option value ="6" <?php if($activity['product_classify'] == '6') echo "selected='selected'"?>>母婴儿童</option>
+                            <option value ="7" <?php if($activity['product_classify'] == '7') echo "selected='selected'"?>>食品酒水</option>
+                            <option value ="8" <?php if($activity['product_classify'] == '8') echo "selected='selected'"?>>其他</option>
                         </select>
                         <br/>
                         <p>此分类为<a href="javascript:void(0);">平台的分类</a></p>
@@ -121,12 +126,10 @@
         var unit_price = $("#unit_price").val();
         var buy_sum = $("#buy_sum").val();
         var freight = $("#freight").val();
-        // alert(shop_name);
-        // alert(platform_id);
-        // alert(seller_id);
+        var margin = buy_sum*unit_price;
         $.ajax({
             url : admin.url+'merchant_issue_try2/update_fake_activity2',
-            data:{act_id:act_id,commodity_name:commodity_name,shop_url:shop_url,commodity_classify:commodity_classify,commodity_picture:commodity_picture,thecolor:thecolor,thesize:thesize,unit_price:unit_price,buy_sum:buy_sum,freight:freight},
+            data:{act_id:act_id,commodity_name:commodity_name,shop_url:shop_url,commodity_classify:commodity_classify,commodity_picture:commodity_picture,thecolor:thecolor,thesize:thesize,unit_price:unit_price,buy_sum:buy_sum,freight:freight,margin:margin},
             type : 'post',
             cache : false,
             success : function (data){

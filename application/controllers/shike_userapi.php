@@ -102,6 +102,18 @@ class Shike_userapi extends MY_Controller {
 		$ress = $this->db->update("user",$info,array("user_id"=>$user_id));
 		echo json_encode($ress);
 	}
+
+	public function get_sideinfo(){
+		$user_id = $this->session->userdata('user_id');
+		$win_count = $this->db->query("select count(*) as count from sorder where user_id={$user_id}")->row_array();
+		$buy_count = $this->db->query("select count(*) as count from discount where user_id={$user_id}")->row_array();
+		$mess_count = $this->db->query("select count(*) as count from message where user_id={$user_id} and user_type='1' and status='0'")->row_array();
+		$result = array('win_count' => $win_count['count'], 
+			            'buy_count' => $buy_count['count'],
+			            'mess_count' => $mess_count['count']);
+		echo json_encode($result);
+
+	}
 /*-----------------------------------------以下为私有方法---------------------------------------------------*/
 
 }

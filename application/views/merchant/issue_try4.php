@@ -26,29 +26,57 @@
                 <div class="trial_content">
                     <ul>
                         <li>
-                            <img src="images/merchant/sj_grzx_bg_sp_default.png" alt="">
+                            <img style="width: 80px;height: 80x" src="<?php echo $activity_list['picture_url'];?>" alt="">
                         </li>
                         <li>
                             <p>商品名称：<span><?php echo $activity_list['product_name']?></span></p>
-                            <p>商品分类：<span><?php echo $activity_list['product_classify']?></span></p>
+                            <p>商品分类：<span><?php if($activity_list['product_classify']==1){
+                                    echo "女装";
+                                }elseif ($activity_list['product_classify']==2) {
+                                    echo "男装";
+                                }elseif ($activity_list['product_classify']==3) {
+                                    echo "鞋包配饰";
+                                }elseif ($activity_list['product_classify']==4) {
+                                    echo "居家生活";
+                                }elseif ($activity_list['product_classify']==5) {
+                                    echo "数码电器";
+                                }elseif ($activity_list['product_classify']==6) {
+                                    echo "母婴儿童";
+                                }elseif ($activity_list['product_classify']==7) {
+                                    echo "食品酒水";
+                                }elseif ($activity_list['product_classify']==8) {
+                                    echo "其他";
+                                }
+                                ?></span></p>
                             <p>商品规格：<span><?php echo $activity_list['color']?>.<?php echo $activity_list['size']?></span></p>
                             <p>商品链接：<span><?php echo $activity_list['product_link']?></span></p>
                         </li>
                         <li>
                             <p>店铺名称：<span><?php echo $activity_list['shopname']?></span></p>
-                            <p>平台：<span><?php echo $activity_list['platformid']?></span></p>
-                            <p><span>通过<?php echo $activity_list['platformid']?>自然搜索</span></p>
+                            <p>平台：<span><?php echo($activity_list['platformid']==1?"淘宝":"天猫");?></span></p>
+                            <p><span>通过<?php echo($activity_list['ser_platformid']==1?"淘宝":"天猫");?>自然搜索</span></p>
                         </li>
                         <li>
-                            <p>商品关键词：<span>女装</span></p>
-                            <p>筛选列表：<span>香奈儿、裙装...</span></p>
+                            <p>商品关键词：<span><?php echo $activity_list['t_key_words']?></span></p>
+                            <p>筛选列表：<span><?php echo $activity_list['t_classify1']?>、<?php echo $activity_list['t_classify2']?>、<?php echo $activity_list['t_classify3']?>、<?php echo $activity_list['t_classify4']?>、<?php echo $activity_list['t_classify5']?></span></p>
                             <p>折扣和服务：<span>24小时发货、货到付款</span></p>
-                            <p>排列方式：<span>httPs://wwww.yuntuigou.com</span></p>
+                            <p>排列方式：<span>
+                            <?php 
+                            if($activity_list['t_sort']==1){
+                                echo "综合排序";
+                            }elseif($activity_list['t_sort']==2){
+                                echo "销量从高到低";
+                            }elseif($activity_list['t_sort']==3){
+                                echo "信用从高到低";
+                            }
+                            ?>
+                            </span></p>
                         </li>
                         <li>
-                            <p>价格：<span>&yen;<?php echo $activity_list['deposit']?></span></p>
-                            <p>发货地：<span>全国</span></p>
-                            <p>商品运费：<?php echo $activity_list['freight']?><span>全国包邮</span></p>
+                            <p>价格：<span>&yen;<?php echo $activity_list['margin']?></span></p>
+                            <p>发货地：<span><?php echo $activity_list['t_delivery_place']?></span></p>
+                            <p>商品运费：<?php if ($activity_list['freight']==0){echo "全国包邮";}else{echo $activity_list['freight'];}
+                            ?><span></span></p>
                         </li>
                     </ul>
                     <div class="try_num">

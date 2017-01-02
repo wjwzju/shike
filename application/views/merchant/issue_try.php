@@ -27,7 +27,7 @@
                 <div class="shop_information">
                     <?php foreach($shoplist as $v):?>
                         <div class="left shop">
-                            <img class="shop_logo" src="images/merchant/sj_fbsy_bg_nike_default.png" alt="">
+                            <img style="width: 60px;height: 60px" src=<?php echo $v['logo_link'];?> alt="">
                             <p class="shop_name"><?php echo $v['shop_name'];?></p>
                             <p class="shop_source">来源：<p class="shop_inner_source"><?php echo ($v['platform_id']==1?'淘宝':'天猫'); ?></p></p>
                         </div>
@@ -74,9 +74,11 @@
         var seller_id = <?php echo $seller_id ?>;
         var shop_name = $("#shop_name").val();
         var platform_id = $("#platform_id").val();
-        // alert(shop_name);
-        // alert(platform_id);
-        // alert(seller_id);
+        if (platform_id == "淘宝"){
+            platform_id = 1;
+        }else{
+            platform_id = 2;
+        }
         $.ajax({
             url : admin.url+'merchant_issue_try/insert_fake_activity',
             data:{seller_id:seller_id,shop_name:shop_name,platform_id:platform_id},

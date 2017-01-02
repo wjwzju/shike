@@ -14,16 +14,16 @@
 	    <div class="place">
         <span>位置：</span>
         <ul class="placeul">
-            <li><a href="#">首页</a></li>
-            <li><a href="#">订单列表</a></li>
+            <li><a href="/admin">首页</a></li>
+            <li><a href="/admin_bankcard_manage">银行卡管理</a></li>
         </ul>
     </div>
     
     <div class="rightinfo">
     
 	    <ul class="seachform">
-		  <li><label>商品名</label><input name="" type="text" class="scinput" /></li>
-		  <li><label>&nbsp;</label><input name="" type="button" class="scbtn" value="查询"/></li>
+		  <li><label>商家账号</label><input name="" type="text" class="scinput" id="merchant_scinput"/></li>
+		  <li><label>&nbsp;</label><input name="" type="button" class="scbtn" value="查询" onclick="merchant_search()"/></li>
 	    </ul>
     
 	<div class="formtitle1"><span>消息管理</span></div>
@@ -49,7 +49,6 @@
         <td><?php echo $v['banktype'];?></td>
         <td><?php echo $v['branchbank'];?></td>
         <td><?php echo $v['name'];?></td>
-        <td><a href="#" class="tablelink">编辑</a></td>
         </tr>
         <?php endforeach ?>
         </tbody>
@@ -58,8 +57,8 @@
     <div class="rightinfo">
     
         <ul class="seachform">
-          <li><label>商品名</label><input name="" type="text" class="scinput" /></li>
-          <li><label>&nbsp;</label><input name="" type="button" class="scbtn" value="查询"/></li>
+          <li><label>试客账号</label><input name="" type="text" class="scinput" id="shike_scinput"/></li>
+          <li><label>&nbsp;</label><input name="" type="button" class="scbtn" value="查询" onclick="shike_search()"/></li>
         </ul>
     
     <div class="formtitle1"><span>消息管理</span></div>
@@ -85,7 +84,6 @@
         <td><?php echo $v['banktype'];?></td>
         <td><?php echo $v['branchbank'];?></td>
         <td><?php echo $v['name'];?></td>
-        <td><a href="#" class="tablelink">编辑</a></td>
         </tr>
         <?php endforeach ?>
         </tbody>
@@ -113,6 +111,14 @@
 </section>
     <script type="text/javascript">
 	$('.tablelist tbody tr:odd').addClass('odd');
+    function merchant_search(){
+            var account = $("#merchant_scinput").val();
+            location.href="/admin_bankcard_manage/merchant_search?search="+account;
+        }
+     function shike_search(){
+            var account = $("#shike_scinput").val();
+            location.href="/admin_bankcard_manage/shike_search?search="+account;
+        }
 	</script>
 
 </body>

@@ -11,7 +11,6 @@ class Shike_get_order5 extends MY_Controller {
 	public function index()
 	{
 
-        // $user_id = $this->session->userdata('user_id');
 		$user_id = $this->session->userdata('user_id');
 		$order_id = $this->input->get("order_id");
 		$orderinfo = $this->db->query("select * from sorder where order_id=".$order_id)->row_array();
@@ -27,7 +26,7 @@ class Shike_get_order5 extends MY_Controller {
 	}
 
 	public function submit_order5(){
-		$user_id = "1";
+		$user_id = $this->session->userdata('user_id');
 		$order_id = $this->input->post('order_id');
 		$outer_orderid = $this->input->post('order');
 		$pay_money = $this->input->post('pay_money');
@@ -43,9 +42,9 @@ class Shike_get_order5 extends MY_Controller {
       	$res = move_uploaded_file($tmp_file,$chatlog);
 
       	$info = array(
-      		'orderdetail_img'=>$orderdetail_img,'outer_orderid'=>$outer_orderid,'real_paymoney'=>$pay_money);
+      		'orderdetail_img'=>$orderdetail_img,'outer_orderid'=>$outer_orderid,'real_paymoney'=>$pay_money,'status' => 1);
       	$this->db->update("sorder",$info,array("order_id"=>$order_id));
-      	header("Location: /shike_get_order6?order_id={$order_id}");
+      	header("Location: /shike_try_winningManage");
         exit();
 	}
 }
