@@ -22,7 +22,7 @@
                         echo '<li><a href="'.base_url('mall/register/merchant_register').'">登出</a></li>';
                     }else
                     {
-                        echo '<li><a href="../register/login.html">登录</a></li>';
+                        echo '<li><a href="">登录</a></li>';
                         echo '<li><a href="'.base_url('mall/register/merchant_register').'">商家注册</a></li>';
                         echo '<li><a href="'.base_url('mall/register/shike_register').'">注册试客</a></li>';
                     }
