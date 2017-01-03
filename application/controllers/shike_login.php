@@ -1,10 +1,11 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class shike_login extends MY_Controller {
+class Shike_login extends MY_Controller {
 
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->library('session');
 	}
 
 	public function index()

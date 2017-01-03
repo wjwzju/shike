@@ -29,10 +29,10 @@
                 <a href="'.base_url('mall/homepage/productdetails/'.$v['act_id']).'"><img src="'.$v['picture_url'].'" alt=""></a>
                 <p class="product_introduction">'.$v['product_name'].'</p>
                 <p class="quantity">
-                    <span>限量版'.$v['amount'].'</span><span>'.$freight.'</span>
+                    <span>限量版'.$v['apply_amount'].'</span><span>'.$freight.'</span>
                 </p>
                 <p class="price">
-                    <span>&yen;'.$v['unit_price'].'</span><span>已申请<b>'.$v['apply_amount'].'</b>次</span>
+                    <span>&yen;'.$v['unit_price'].'</span><span>已申请<b>'.$v['apply_apply_amount'].'</b>次</span>
                 </p>
             </div>';
         }
@@ -81,10 +81,10 @@
                             '<a href="<?=base_url('mall/homepage/productdetails/')?>'+ e.act_id+ '"><img src="'+ e.picture_url + '" alt=""></a>'+
                             '<p class="product_introduction">'+ e.product_name +'</p>'+
                             '<p class="quantity">'+
-                            '<span>限量版'+ e.amount + '份</span>'+ freight+
+                            '<span>限量版'+ e.apply_amount + '份</span>'+ freight+
                             '</p>'+
                             '<p class="price">'+
-                            '<span>&yen;'+ e.unit_price +'</span><span>已申请<b>'+ e.applyed_num+'</b>次</span>'+
+                            '<span>&yen;'+ e.unit_price +'</span><span>已申请<b>'+ e.apply_count+'</b>次</span>'+
                             '</p>'+
                             '</div>';
                         console.log(e)
@@ -137,10 +137,10 @@
                                     '<a href="<?=base_url('mall/homepage/productdetails/')?>'+ e.act_id+ '"><img src="'+ e.picture_url + '" alt=""></a>'+
                                     '<p class="product_introduction">'+ e.product_name +'</p>'+
                                     '<p class="quantity">'+
-                                    '<span>限量版'+ e.amount + '份</span>'+ freight+
+                                    '<span>限量版'+ e.apply_amount + '份</span>'+ freight+
                                     '</p>'+
                                     '<p class="price">'+
-                                    '<span>&yen;'+ e.unit_price +'</span><span>已申请<b>'+ e.applyed_num+'</b>次</span>'+
+                                    '<span>&yen;'+ e.unit_price +'</span><span>已申请<b>'+ e.apply_count+'</b>次</span>'+
                                     '</p>'+
                                     '</div>';
                                 console.log(e)

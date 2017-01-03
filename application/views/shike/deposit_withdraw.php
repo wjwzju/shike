@@ -20,7 +20,7 @@
             <h2>填写提现金额</h2>
             <!--填写金额先关的信息-->
             <div class="fillIn_money">
-                <div class="main_one"><b>可用提现本金：</b><span>&yen;0.00</span></div>
+                <div class="main_one"><b>可用提现本金：</b><span>&yen;<?php echo $user['money_use'];?></span></div>
                 <div class="main_two">
                     <b>提现银行账户：</b>
                 <?php if(!$bankcard):?>
@@ -128,10 +128,10 @@
         $('.mask_layer').height(document.body.offsetHeight+500);
 
 //        提现成功弹框
-        $('#confirm_withdraw').bind('click',function(){
-            $('.withdraw_modal').css('display','block');
-           disableScroll();
-        });
+        // $('#confirm_withdraw').bind('click',function(){
+        //     $('.withdraw_modal').css('display','block');
+        //    disableScroll();
+        // });
 ////        提现失败弹框
 //        $('#confirm_withdraw').bind('click',function(){
 //            $('.withdrawFailure_modal').css('display','block');
@@ -161,16 +161,38 @@
     function post_tixian(){
         var tixian = $("#tixian").val();
         var tixian_pwd = $("#tixian_pwd").val();
+        var avail_deposit = <?php echo $user['money_use'];?>;
         if(!tixian){
             $("#tixianerror").text("提现金额不能为空");
+            return;
+        }
+        if(avail_deposit < tixian){
+            $("#tixianerror").text("金额不足");
             return;
         }
         if(!tixian_pwd){
             $("#pwderror").text("提现密码不能为空");
             return;
         }
-        return;
+        $.ajax({
+            url : admin.url+'shike_deposit_withdraw/post_tixian',
+            data:{tixian:tixian,tixian_pwd:tixian_pwd},
+            type : 'post',
+            cache : false,
+            datatype : "json",
+            success : function (data){
+                if(!data){
+                    $('.withdrawFailure_modal').css('display','block');
+                }else{
+                    $('.withdraw_modal').css('display','block');
+                }
+
+            },
+            error : function (XMLHttpRequest, textStatus){
+            }
+        })
     }
+
 </script>
 </body>
 </html>

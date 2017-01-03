@@ -114,7 +114,7 @@
                     <p><img src="<?=base_url('/images/mall/bzzz_bg_erji_default.png')?>" alt=""></p>
                     <p><span>在线客服</span></p>
                     <p>人工服务时间：周一至周五：9:00-18:00</p>
-                    <p><img src="<?=base_url('/images/mall/login_button_QQ_default.png')?>" alt=""></p>
+                    <p><img src="<?=base_url('/images/mall/login_button_QQ_default.png')?>" onclick="window.open('http://wpa.qq.com/msgrd?v=3&uin=861571200&site=qq&menu=yes')" alt=""></p>
                 </div>
                 <div class="right contact_way">
                     <p><img src="<?=base_url('/images/mall/bzzz_bg_dinahua_default.png')?>" alt=""></p>

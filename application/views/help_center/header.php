@@ -22,11 +22,17 @@
                 //echo json_encode($_SESSION);
                 if(isset($_SESSION['user_id']))
                 {
-                    echo '<li><a class="merchant_active" href="'.base_url('mall/register/merchant_register').'">'.$_SESSION['user_name'].'</a></li>';
+                    if($_SESSION['shike_login'])
+                    {
+                        echo '<li><a class="merchant_active" href="'.base_url('shike_personal').'">'.$_SESSION['user_name'].'</a></li>';
+                    }else
+                    {
+                        echo '<li><a class="merchant_active" href="'.base_url('merchant_personal').'">'.$_SESSION['user_name'].'</a></li>';
+                    }
                     echo '<li><a href="'.base_url('mall/register/merchant_register').'">登出</a></li>';
                 }else
                 {
-                    echo '<li><a href="../register/login.html">登录</a></li>';
+                    echo '<li><a href="'.base_url('login/index').'">登录</a></li>';
                     echo '<li><a href="'.base_url('mall/register/merchant_register').'">商家注册</a></li>';
                     echo '<li><a href="'.base_url('mall/register/shike_register').'">注册试客</a></li>';
                 }

@@ -87,7 +87,7 @@
         //$('#footer').load('../common/footer.html');
     })
 
-    /*function get_phone_code(obj)
+    function get_phone_code(obj)
     {
         var phone = $('.phone2').val();
         var phone_error = $(".phone_error").text();
@@ -108,7 +108,7 @@
                 }
             }
         })
-    }*/
+    }
 
     function verify_phone(){
         var tel = $("#phone").val();
@@ -181,7 +181,7 @@
     $('.myAlert').on('click','.close,.cancel,.confirm',function(){
         $('.modal').css('display','none');
         enableScroll();
-        location.href = "<?=base_url('mall/homepage/index')?>";
+        location.href = "<?=base_url('login/index')?>";
     })
 
     $('.user_name').on('blur',function(){

@@ -25,7 +25,7 @@
                         <img src="images/merchant/sj_grzx_icon_touxiang_default.png" alt="">
                     </div>
                     <div class="left username">
-                        <h1><?php echo $sellerinfo['account']?></h1>
+                        <h1><?php echo $sellerinfo['user_name']?></h1>
                         <p>会员等级：<span><?php  echo ($sellerinfo['level']==1 ? '试用会员':'正式会员');?></span><?php if($sellerinfo['level'] != 1):?><b><?php echo substr($sellerinfo['end_time'],0,10);?>到期</b><?php endif;?></p>
                         <input type="button" value=<?php  echo ($sellerinfo['level']==1 ? '购买正式会员':'续费');?> onclick="window.open('/merchant_member_recharge')"/>
                     </div>

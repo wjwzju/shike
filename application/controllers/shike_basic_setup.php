@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class shike_basic_setup extends MY_Controller {
+class Shike_basic_setup extends MY_Controller {
 
 	function __construct()
 	{

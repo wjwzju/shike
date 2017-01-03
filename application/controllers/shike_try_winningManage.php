@@ -1,16 +1,17 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class shike_try_winningManage extends MY_Controller {
+class Shike_try_winningManage extends MY_Controller {
 
 	function __construct()
 	{
 		parent::__construct();
+		parent::check_shike_login();
 	}
 
 	public function index()
 	{
 
-		$user_id = "1";
+		$user_id = $this->session->userdata('user_id');
 		
 		$date = date('Y-m-d H:i:s',time());
 		$where = "(UNIX_TIMESTAMP('{$date}')-(UNIX_TIMESTAMP(time))>172800) and status != 7 ";

@@ -13,6 +13,8 @@ class MY_Controller extends CI_Controller {
 		//self::check_login();
 		$this->out_data['site_url'] = $this->get_site_url();
 		$this->out_data['current_function'] = '';
+		$this->load->database();
+		$this->load->library('session');
 	}
 
 	public function check_merchant_login(){

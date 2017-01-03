@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 header("Content-Type: text/html;charset=utf-8"); 
-class shike_get_order6 extends MY_Controller {
+class Shike_get_order6 extends MY_Controller {
 
 	function __construct()
 	{

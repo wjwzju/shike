@@ -46,8 +46,12 @@
                 </li>
             </ul>
             <div class="need_pay">
-                <p class="one">您已选择<b class="month">12</b>个月会员，有效期至<b>2012.12.12</b></p>
-                <p class="two">需要支付:<span class="money">&yen;4000.00</span></p>
+                <p class="one">您已选择<b>12</b>个月会员，有效期至<b><?php echo $one_year_end;?></b></p>
+                <p class="two">需要支付:<span>&yen;4000.00</span></p>
+                <p class="three" style = "display:none">您已选择<b>24</b>个月会员，有效期至<b><?php echo $two_year_end;?></b></p>
+                <p class="four" style = "display:none">需要支付:<span>&yen;7200.00</span></p>
+                <p class="five" style = "display:none">您已选择<b>36</b>个月会员，有效期至<b><?php echo $three_year_end;?></b></p>
+                <p class="six" style = "display:none">需要支付:<span>&yen;9600.00</span></p>
             </div>
             <h1>请选择银行</h1>
             <table>
@@ -81,7 +85,7 @@
                 </tr>
             </table>
             <p class="confirm_btn">
-                <input id="confirm_payment" type="button" value="确认付款"/>
+                <input id="confirm_payment" type="button" value="确认付款" onclick="pay_recharge()"/>
             </p>
             <div class="warm_prompt">
                 <h1>温馨提示：</h1>
@@ -97,8 +101,9 @@
     </div>
 </section>
 <footer id="footer"></footer>
-<script src="../../js/jquery-1.10.2.js"></script>
-<script src="../../js/modal_scrollbar.js"></script>
+<input type="hidden" id="hidden_recharge">
+<script src="js/shike/jquery-1.10.2.js"></script>
+<script src="js/shike/modal_scrollbar.js"></script>
 <script>
     $(function(){
         // $('#header').load("../common/merchant_header.html");
@@ -107,22 +112,22 @@
         //     $('.account_information ul>li').find('a').eq(2).addClass('left_nav_active');
         // });
 //        充值不同的会员
-        $('.select').bind('click',function(){
-            $(this).css('border','1px solid #e61e28');
-            $(this).siblings().css('border','1px solid #c8c8c8');
-        });
-        $('.one_years').bind('click',function(){
-            $('.month').text(12);
-            $('.money').text('¥4000');
-        });
-        $('.two_years').bind('click',function(){
-            $('.month').text(24);
-            $('.money').text('¥7200');
-        });
-        $('.three_years').bind('click',function(){
-            $('.month').text(36);
-            $('.money').text('¥9600');
-        });
+        // $('.select').bind('click',function(){
+        //     $(this).css('border','1px solid #e61e28');
+        //     $(this).siblings().css('border','1px solid #c8c8c8');
+        // });
+        // $('.one_years').bind('click',function(){
+        //     $('.month').text(12);
+        //     $('.money').text('¥4000');
+        // });
+        // $('.two_years').bind('click',function(){
+        //     $('.month').text(24);
+        //     $('.money').text('¥7200');
+        // });
+        // $('.three_years').bind('click',function(){
+        //     $('.month').text(36);
+        //     $('.money').text('¥9600');
+        // });
         $('.bank').bind('click',function(){
             $(this).css('border','1px solid #e61e28');
             $(this).siblings().css('border','1px solid #c8c8c8')
@@ -135,17 +140,48 @@
             $(this).siblings().css('border','1px solid #c8c8c8');
         })
         if(o == 1){
-            $('.month').text(12);
-            $('.money').text('¥4000');
+            $('.one').css('display','block');
+            $('.two').css('display','block');
+            $('.three').css('display','none');
+            $('.four').css('display','none');
+            $('.five').css('display','none');
+            $('.six').css('display','none');
         }
         if(o == 2){
-            $('.month').text(24);
-            $('.money').text('¥7200');
+            $('.one').css('display','none');
+            $('.two').css('display','none');
+            $('.three').css('display','block');
+            $('.four').css('display','block');
+            $('.five').css('display','none');
+            $('.six').css('display','none');
         }
         if(o == 3){
-            $('.month').text(36);
-            $('.money').text('¥9600');
+            $('.one').css('display','none');
+            $('.two').css('display','none');
+            $('.three').css('display','none');
+            $('.four').css('display','none');
+            $('.five').css('display','block');
+            $('.six').css('display','block');
         }
+        $('#hidden_recharge').val(o);
+    }
+    function pay_recharge(){
+        var recharge_year = $("#hidden_recharge").val();
+        $.ajax({
+            url : admin.url+'shike_member_recharge/pay_recharge',
+            type : "POST",
+            datatype : "json",
+            cache : false,
+            timeout : 20000,
+            data : {recharge_year:recharge_year},
+            success : function (result){
+                location.href=admin.url+"shike_member_recharge";
+            },
+            error : function(XMLHttpRequest, textStatus){
+                console.log(XMLHttpRequest);
+                console.log(textStatus);
+            }
+        })
     }
 </script>
 </body>

@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class merchant_login extends MY_Controller {
+class Merchant_login extends MY_Controller {
 
 	function __construct()
 	{

@@ -25,7 +25,11 @@
                 </tr>
                 <tr>
                     <td><?php  echo ($seller['level']==1 ? '试用会员':'正式会员');?></td>
+                    <?php if($seller['level']==1):?>
+                    <td>----</td>
+                    <?php else:?>
                     <td><?php echo substr($seller['end_time'],0,10);?></td>
+                    <?php endif;?>
                     <td><a href="/merchant_member_recharge"><?php  echo ($seller['level']==1 ? '购买正式会员':'续费');?></a></td>
                 </tr>
             </table>

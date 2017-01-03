@@ -16,7 +16,7 @@
                 <li>您的位置：</li>
                 <li><a href="/shike_personal">个人中心</a></li>
                 <li><img src="images/shike/icon_arrow_default.png" alt=""></li>
-                <li><a href="02_try_winningManage.html">使用管理</a></li>
+                <li><a href="/shike_try_winningManage">使用管理</a></li>
                 <li><img src="images/shike/icon_arrow_default.png" alt=""></li>
                 <li>领取下单</li>
             </ul>
@@ -129,8 +129,8 @@
 <script src="js/shike/modal_scrollbar.js"></script>
 <script>
     $(function(){
-        $('#header').load("../common/merchant_header.html");
-        $('#footer').load("../common/footer.html");
+        // $('#header').load("../common/merchant_header.html");
+        // $('#footer').load("../common/footer.html");
 
         $('#second_step').bind('click',function(){
             $('.second_step .example_images').slideToggle();

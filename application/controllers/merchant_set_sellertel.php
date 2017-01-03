@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class merchant_set_sellertel extends MY_Controller {
+class Merchant_set_sellertel extends MY_Controller {
 
 	function __construct()
 	{

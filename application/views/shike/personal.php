@@ -73,7 +73,7 @@
                     </div>
                     <div class="detalis">
                         <ul>
-                            <li><img src="images/merchant/order_<?php echo $v['order_id'];?>.png" alt=""></li>
+                            <li><img src="<?php echo $v['product_img'];?>" alt=""></li>
                             <li>
                                 <p class="clothes_name"><span><?php echo $v['product_name'];?></span></p>
                                 <p class="two">店铺：<span><?php echo $v['shopname'];?></span></p>
@@ -127,7 +127,7 @@
                             </li>
                             <li>
                                 <p class="place_order">
-                                    <input onclick="location.href='getOrders_stepOne.html'" type="button" value="领取下单"/>
+                                    <input onclick="location.href='/shike_get_order?order_id=<?php echo $v['order_id'];?>'" type="button" value="领取下单"/>
                                 </p>
                                 <p><span>还剩48小时00分00秒</span></p>
                                 <p><a  id="place_order" href="javascript:void(0);">查看下单领取规则</a></p>
@@ -138,7 +138,7 @@
                                 <p>待复制评价</p>
                             </li>
                             <li>
-                                <p onclick="location.href='taobao_evaluation.html'"  class="btn" id="audit"><input type="button" value="淘宝评价"/></p>
+                                <p onclick="location.href='/shike_taobao_evaluation?order_id=<?php echo $v['order_id'];?>'"  class="btn" id="audit"><input type="button" value="淘宝评价"/></p>
                             </li>
                         <?php endif;?>
                         <?php if($v['status'] == 6):?>
@@ -146,7 +146,7 @@
                                 <p>待收货评价</p>
                             </li>
                             <li>
-                                <p class="btn"><input onclick="location.href='preliminary_evaluation.html'" type="button" value="初步评价"/></p>
+                                <p class="btn"><input onclick="location.href='/shike_preliminary_evaluation?order_id=<?php echo $v['order_id'];?>'" type="button" value="初步评价"/></p>
                             </li>
                         <?php endif;?>
                         <?php if($v['status'] == 7):?>
@@ -207,8 +207,8 @@
     <div class="mask_layer"></div>
 </div>
 
-<script src="../../js/jquery-1.10.2.js"></script>
-<script src="../../js/modal_scrollbar.js"></script>
+<script src="js/shike/jquery-1.10.2.js"></script>
+<script src="js/shike/modal_scrollbar.js"></script>
 <script>
     $(function(){
         // $('#header').load("../common/merchant_header.html");

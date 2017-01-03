@@ -1,16 +1,21 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class shike_application_record extends MY_Controller {
+class Shike_application_record extends MY_Controller {
 
 	function __construct()
 	{
 		parent::__construct();
+		parent::check_shike_login();
+
 	}
 
 	public function index()
 	{
-		$user_id = "1";
-
+		$user_id = $this->session->userdata('user_id');
+		// if(!$user_id){
+		// 	header("Location: /login");
+		// 	return;
+		// }
 		$date = date('Y-m-d H:i:s',time());
 		$where = "(UNIX_TIMESTAMP('{$date}')-(UNIX_TIMESTAMP(apply_time))>172800) and apply_status != 3 and apply_status !=4 ";
 		$res = $this->db->update("apply",array("apply_status"=>2),$where);
@@ -24,7 +29,7 @@ class shike_application_record extends MY_Controller {
 		if(!$order_status){
 			$base_url = "/shike_application_record/?";
 		}else{
-			$orderwhere .= " and apply_status=3 or apply_status=4";
+			$orderwhere = " where apply_status=3 or apply_status=4 and user_id=$user_id";
 			$base_url = "/shike_application_record/?order_status=".$order_status;
 		}
 
@@ -46,5 +51,8 @@ class shike_application_record extends MY_Controller {
 		$res = $this->db->update("apply",array("apply_status"=>'2'),array('apply_id'=>$apply_id));
 		echo json_encode($res);
 		// echo 1;
+	}
+	public function test(){
+		var_dump($this->session->all_userdata());
 	}
 }

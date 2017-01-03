@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 header("Content-Type: text/html; charset=GBK");
 //require_once 'log.php';
-class sendcloud extends MY_Controller {
+class Sendcloud extends MY_Controller {
 
 	function __construct()
 	{

@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class login extends CI_Controller {
+class Login extends MY_Controller {
 
 	function __construct()
 	{
@@ -9,29 +9,46 @@ class login extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('login');
+		$this->out_data['qq'] = $this->db->query("select qq from qqkefu")->row_array();
+		$this->out_data['qq'] = $this->out_data['qq']['qq'];
+		$this->load->view('login',$this->out_data);
 	}
 
 	function check_login()
 	{
-		$this->load->model('md_login');
+		$result = array('status' => true, 'msg' => '');
 		$name = $this->input->post('name');
 		$password = $this->input->post('password');
-		$result = $this->md_login->check_login($name, $password);
-		if($result['status'])
-		{
-			$this->session->set_userdata('admin_login', 1);
-			$this->session->set_userdata('id', $result['id']);
-			$this->session->set_userdata('nick', $result['nick']);
-			$this->session->set_userdata('permission', $result['permission']);
-			$this->session->set_userdata('rid', $result['rid']);
-		}
+		$password = md5($password);
+
+		$query_merchant = $this->db->query("select * from seller where (user_name='{$name}' and passwd='{$password}') or (tel='{$name}' and passwd='{$password}')");
+        $query_shike = $this->db->query("select * from user where user_name='{$name}' and password='{$password}' or phone='{$name}' and password='{$password}'");
+
+		if($query_merchant->num_rows() > 0)
+        {
+            $query = $query_merchant->row_array();
+            $result = array_merge($result, $query);
+            $this->session->set_userdata('seller_id', $result['seller_id']);
+            $this->session->set_userdata('user_name', $result['user_name']);
+			$this->session->set_userdata('merchant_login', true);
+        }
+        elseif($query_shike->num_rows() > 0){
+            $query = $query_shike->row_array();
+            $result = array_merge($result, $query);
+            $this->session->set_userdata('user_id', $result['user_id']);
+			$this->session->set_userdata('user_name', $result['user_name']);
+			$this->session->set_userdata('shike_login', true);
+        }
+        else{
+            $result = array('status' => false, 'msg' => '用户名或密码错误，请重新输入');
+        }
+		
 		echo json_encode($result);
 	}
 
 	function logout()
 	{
 		$this->session->sess_destroy();
-		header("Location:".base_url()."login");
+		header("Location: /login");
 	}
 }

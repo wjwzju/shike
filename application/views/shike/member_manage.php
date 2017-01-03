@@ -25,7 +25,11 @@
                 </tr>
                 <tr>
                     <td><?php  echo ($user['level']==1 ? '试用会员':'正式会员');?></td>
+                    <?php if($user['level']==1):?>
+                    <td>----</td>
+                    <?php else:?>
                     <td><?php echo substr($user['vip_endtime'],0,10);?></td>
+                    <?php endif;?>
                     <td><a href="/shike_member_recharge"><?php  echo ($user['level']==1 ? '购买正式会员':'续费');?></a></td>
                 </tr>
             </table>
@@ -50,7 +54,8 @@
             </table>
             <h2>会员介绍：</h2>
             <div class="member_introduce">
-                <p>1.会员商家发布试用没有数量限制，普通商家一个月只能发布一款试用商品；</p>
+                <p>1.VIP会员申请试用没有限制，普通会员一周只能申请一款试用商品；</p>
+                <p>2.VIP会员中奖概率高于普通会员；</p>
             </div>
         </div>
     </div>

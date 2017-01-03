@@ -59,6 +59,7 @@
                 timeout : 20000,
                 data : {name:name,password:password},
                 success : function (result){
+                    console.log(result);
                     result = $.parseJSON(result);
                     if(result.status){
                         location.href = '/shike_personal';

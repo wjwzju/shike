@@ -15,7 +15,7 @@
                 <li>您的位置：</li>
                 <li><a href="/shike_personal">个人中心</a></li>
                 <li><img src="images/shike/icon_arrow_default.png" alt=""></li>
-                <li><a href="javascript:void(0)">使用管理</a></li>
+                <li><a href="/shike_try_winningManage">使用管理</a></li>
                 <li><img src="images/shike/icon_arrow_default.png" alt=""></li>
                 <li>领取下单</li>
             </ul>

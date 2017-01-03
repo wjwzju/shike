@@ -125,10 +125,10 @@
         $('.mask_layer').height(document.body.offsetHeight+500);
 
 //        提现成功弹框
-        $('#confirm_withdraw').bind('click',function(){
-            $('.withdraw_modal').css('display','block');
-           disableScroll();
-        });
+        // $('#confirm_withdraw').bind('click',function(){
+        //     $('.withdraw_modal').css('display','block');
+        //    disableScroll();
+        // });
 ////        提现失败弹框
 //        $('#confirm_withdraw').bind('click',function(){
 //            $('.withdrawFailure_modal').css('display','block');
@@ -158,15 +158,36 @@
     function post_tixian(){
         var tixian = $("#tixian").val();
         var tixian_pwd = $("#tixian_pwd").val();
+        var avail_deposit = <?php echo $seller['avail_deposit'];?>;
         if(!tixian){
             $("#tixianerror").text("提现金额不能为空");
+            return;
+        }
+        if(avail_deposit < tixian){
+            $("#tixianerror").text("金额不足");
             return;
         }
         if(!tixian_pwd){
             $("#pwderror").text("提现密码不能为空");
             return;
         }
-        return;
+        $.ajax({
+            url : admin.url+'merchant_deposit_withdraw/post_tixian',
+            data:{tixian:tixian,tixian_pwd:tixian_pwd},
+            type : 'post',
+            cache : false,
+            datatype : "json",
+            success : function (data){
+                if(!data){
+                    $('.withdrawFailure_modal').css('display','block');
+                }else{
+                    $('.withdraw_modal').css('display','block');
+                }
+
+            },
+            error : function (XMLHttpRequest, textStatus){
+            }
+        })
     }
 </script>
 </body>

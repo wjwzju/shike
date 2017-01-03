@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class shike_funds_record extends MY_Controller {
+class Shike_funds_record extends MY_Controller {
 
 	function __construct()
 	{

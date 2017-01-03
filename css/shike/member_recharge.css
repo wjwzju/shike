@@ -86,6 +86,26 @@
   color: #e61e28;
   margin-left: 10px;
 }
+#section .rechange_details .member_rechange .need_pay p.three {
+  padding-bottom: 8px;
+}
+#section .rechange_details .member_rechange .need_pay p.three b {
+  color: #f10180;
+}
+#section .rechange_details .member_rechange .need_pay p.four span {
+  font-size: 24px;
+  color: #e61e28;
+}
+#section .rechange_details .member_rechange .need_pay p.five {
+  padding-bottom: 8px;
+}
+#section .rechange_details .member_rechange .need_pay p.five b {
+  color: #f10180;
+}
+#section .rechange_details .member_rechange .need_pay p.six span {
+  font-size: 24px;
+  color: #e61e28;
+}
 #section .rechange_details .member_rechange table {
   margin-left: -10px;
   border-collapse: separate;

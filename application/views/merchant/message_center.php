@@ -23,11 +23,11 @@
                     <?php if($v['status'] == 0):?>
                     <td style="font-weight:bold"><?php echo substr($v['message_time'],0,10);?></td>
                     <td style="font-weight:bold"><?php echo $v['title'];?></td>
-                    <td style="font-weight:bold"><a href="/merchant_message_details?message_id=<?php echo $v['message_id'];?>">查看详情</a></td>
+                    <td style="font-weight:bold"><a href="/merchant_message_details?message_id=<?php echo $v['id'];?>">查看详情</a></td>
                     <?php else:?>
                     <td><?php echo substr($v['message_time'],0,10);?></td>
                     <td><?php echo $v['title'];?></td>
-                    <td><a href="/merchant_message_details?message_id=<?php echo $v['message_id'];?>">查看详情</a></td>
+                    <td><a href="/merchant_message_details?message_id=<?php echo $v['id'];?>">查看详情</a></td>
                     <?php endif;?>
                 </tr>
                 <?php endforeach ?>

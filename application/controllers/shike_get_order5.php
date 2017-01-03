@@ -1,37 +1,17 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class shike_get_order5 extends MY_Controller {
+class Shike_get_order5 extends MY_Controller {
 
 	function __construct()
 	{
 		parent::__construct();
+		parent::check_shike_login();
 	}
 
 	public function index()
 	{
 
-        // $user_id = $this->session->userdata('user_id');
-		$user_id=1;
-		// $orderwhere = '';
-		// $order_status = $this->input->get('order_status');
-		// $this->out_data['order_status'] = $order_status;
-		// if(!$order_status){
-			
-		// }else{
-		// 	$orderwhere .= " where status=".$order_status;
-		// }
-		// echo $orderwhere;
-		// die();
-        // $users = $this->db->query("select * from user where user_id='1'")->row_array();
-        // echo $users['user_id'];
-
-  //       $this->out_data['user'] = $this->db->query("select * from user where user_id='1'")->row_array();
-		// $this->out_data['sellerinfo'] = $this->db->query("select * from seller where seller_id ={$user_id}")->row_array();
-		// $this->out_data['order_list'] = $this->db->query("select * from sorder".$orderwhere)->result_array();
-		// $this->out_data['sum_order_list'] = $this->db->query("select count(*) as count from sorder")->row_array();
-		// $this->out_data['sum_1_order_list'] = $this->db->query("select count(*) as count from sorder where status=1")->row_array();
-		// $this->out_data['sum_2_order_list'] = $this->db->query("select count(*) as count from sorder where status=2")->row_array();
-		// $this->out_data['sum_3_order_list'] = $this->db->query("select count(*) as count from sorder where status=3")->row_array();
+		$user_id = $this->session->userdata('user_id');
 		$order_id = $this->input->get("order_id");
 		$orderinfo = $this->db->query("select * from sorder where order_id=".$order_id)->row_array();
 		$userinfo = $this->db->query("select * from user where user_id=".$user_id)->row_array();
@@ -46,7 +26,7 @@ class shike_get_order5 extends MY_Controller {
 	}
 
 	public function submit_order5(){
-		$user_id = "1";
+		$user_id = $this->session->userdata('user_id');
 		$order_id = $this->input->post('order_id');
 		$outer_orderid = $this->input->post('order');
 		$pay_money = $this->input->post('pay_money');
@@ -62,9 +42,9 @@ class shike_get_order5 extends MY_Controller {
       	$res = move_uploaded_file($tmp_file,$chatlog);
 
       	$info = array(
-      		'orderdetail_img'=>$orderdetail_img,'outer_orderid'=>$outer_orderid,'real_paymoney'=>$pay_money);
+      		'orderdetail_img'=>$orderdetail_img,'outer_orderid'=>$outer_orderid,'real_paymoney'=>$pay_money,'status' => 1);
       	$this->db->update("sorder",$info,array("order_id"=>$order_id));
-      	header("Location: /shike_get_order6?order_id={$order_id}");
+      	header("Location: /shike_try_winningManage");
         exit();
 	}
 }

@@ -1,43 +1,24 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class merchant_issue_try3 extends MY_Controller {
+class Merchant_issue_try3 extends MY_Controller {
 
 	function __construct()
 	{
 		parent::__construct();
+		parent::check_merchant_login();
 	}
 
 	public function index()
 	{
 
         // $user_id = $this->session->userdata('user_id');
-		$user_id=1;
+		$user_id=$this->session->userdata('seller_id');
 		$this->out_data['act_id'] = $this->input->get('act_id');
 		$activity_sellerid = $this->db->query('select seller_id from activity where act_id='.$this->out_data['act_id'])->row_array();
 		if($user_id != $activity_sellerid['seller_id']){
 			echo "不可允许的访问";
 			return;
 		}
-		// $orderwhere = '';
-		// $order_status = $this->input->get('order_status');
-		// $this->out_data['order_status'] = $order_status;
-		// if(!$order_status){
-			
-		// }else{
-		// 	$orderwhere .= " where status=".$order_status;
-		// }
-		// echo $orderwhere;
-		// die();
-        // $users = $this->db->query("select * from user where user_id='1'")->row_array();
-        // echo $users['user_id'];
-
-  //       $this->out_data['user'] = $this->db->query("select * from user where user_id='1'")->row_array();
-		// $this->out_data['sellerinfo'] = $this->db->query("select * from seller where seller_id ={$user_id}")->row_array();
-		// $this->out_data['order_list'] = $this->db->query("select * from sorder".$orderwhere)->result_array();
-		// $this->out_data['sum_order_list'] = $this->db->query("select count(*) as count from sorder")->row_array();
-		// $this->out_data['sum_1_order_list'] = $this->db->query("select count(*) as count from sorder where status=1")->row_array();
-		// $this->out_data['sum_2_order_list'] = $this->db->query("select count(*) as count from sorder where status=2")->row_array();
-		// $this->out_data['sum_3_order_list'] = $this->db->query("select count(*) as count from sorder where status=3")->row_array();
 		$this->out_data['seller_id'] = $user_id;
 		$this->out_data['shoplist'] = $this->db->query("select * from shop where seller_id=".$user_id)->result_array();
 		$this->out_data['activity'] = $this->db->query("select * from activity where act_id=".$this->out_data['act_id'])->row_array();
@@ -61,10 +42,28 @@ class merchant_issue_try3 extends MY_Controller {
 		$t_higher_price = $this->input->post('t_higher_price');
 		$t_delivery_place = $this->input->post('t_delivery_place');
 		$t_sort = $this->input->post('t_sort');
-		$info = array("platformid" => $platformid,"t_picture_url" => $t_picture_url,"t_key_words" => $t_key_words,"t_classify1" => $t_classify1,"t_classify2" => $t_classify2,"t_classify3" => $t_classify3,
-			"t_classify4" => $t_classify4,"t_classify5" => $t_classify5,"t_lower_price" => $t_lower_price,"t_higher_price" => $t_higher_price,"t_delivery_place" => $t_delivery_place);
+		$dis_ser1 = ($this->input->post('dis_ser1')=='true') ? 1:0;
+		$dis_ser2 = ($this->input->post('dis_ser2')=='true') ? 1:0;
+		$dis_ser3 = ($this->input->post('dis_ser3')=='true') ? 1:0;
+		$dis_ser4 = ($this->input->post('dis_ser4')=='true') ? 1:0;
+		$dis_ser5 = ($this->input->post('dis_ser5')=='true') ? 1:0;
+		$dis_ser6 = ($this->input->post('dis_ser6')=='true') ? 1:0;
+		$dis_ser7 = ($this->input->post('dis_ser7')=='true') ? 1:0;
+		$dis_ser8 = ($this->input->post('dis_ser8')=='true') ? 1:0;
+		$dis_ser9 = ($this->input->post('dis_ser9')=='true') ? 1:0;
+		$dis_ser10 = ($this->input->post('dis_ser10')=='true') ? 1:0;
+		$dis_ser11 = ($this->input->post('dis_ser11')=='true') ? 1:0;
+		// $dis_ser1 = $this->input->post('dis_ser1');
+		// if($dis_ser1=='true'){
+		// 	$dis_ser1=1;
+		// }else{
+		// 	$dis_ser1=0;
+		// }
+		//echo json_encode($dis_ser1);return;
+		$info = array("ser_platformid" => $platformid,"t_picture_url" => $t_picture_url,"t_key_words" => $t_key_words,"t_classify1" => $t_classify1,"t_classify2" => $t_classify2,"t_classify3" => $t_classify3,"t_classify4" => $t_classify4,"t_classify5" => $t_classify5,"t_lower_price" => $t_lower_price,"t_higher_price" => $t_higher_price,"t_delivery_place" => $t_delivery_place,"t_sort"=>$t_sort,"dis_ser1"=>$dis_ser1,"dis_ser2"=>$dis_ser2,"dis_ser3"=>$dis_ser3,"dis_ser4"=>$dis_ser4,"dis_ser5"=>$dis_ser5,"dis_ser6"=>$dis_ser6,"dis_ser7"=>$dis_ser7,"dis_ser8"=>$dis_ser8,"dis_ser9"=>$dis_ser9,"dis_ser10"=>$dis_ser10,"dis_ser11"=>$dis_ser11);
 		$res = $this->db->update("activity",$info,array("act_id"=>$act_id));
 		echo json_encode($res);
+		//echo json_encode($info);
 
 	}
 	public function update_confirm_ship(){

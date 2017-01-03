@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class shike_message_center extends MY_Controller {
+class Shike_message_center extends MY_Controller {
 
 	function __construct()
 	{

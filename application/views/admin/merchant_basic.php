@@ -62,8 +62,8 @@ $(document).ready(function(e) {
 	    <div class="place">
         <span>位置：</span>
         <ul class="placeul">
-            <li><a href="#">首页</a></li>
-            <li><a href="#">订单列表</a></li>
+            <li><a href="/admin">首页</a></li>
+            <li><a href="/admin_merchant_basic">商家管理</a></li>
         </ul>
     </div>
     

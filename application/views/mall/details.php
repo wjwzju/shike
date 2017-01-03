@@ -33,12 +33,12 @@
                             {
                                 echo '0.00</b> <span>包邮试用</span>';
                             }?></p>
-                    <p class="offer">提供<span><?php echo $product_details['apply_amount'];?></span>份试用,目前已有<span><?php echo $product_details['applyed_num'];?></span>人申请</p>
+                    <p class="offer">提供<span><?php echo $product_details['apply_amount'];?></span>份试用,目前已有<span><?php echo $product_details['apply_count'];?></span>人申请</p>
                 </div>
                 <!--规格-->
                 <p class="standard">指定规格：<b><?php echo $product_details['color'];?>  <?php echo $product_details['size'];?></b></p>
                 <p class="number">购买数量：<b><?php echo $product_details['buy_sum'];?>件</b></p>
-                <input onclick="location.href='../apply_try/applyTry_one.html'" class="application_button" type="button" value="免费申请">
+                <input onclick="apply_product()" class="application_button" type="button" value="免费申请">
             </div>
             <div class="activity left">
                 <div class="activity_time">
@@ -67,7 +67,7 @@
         <!--试用流程-->
         <div class="use_flow">
             <div class="has_apply">
-                <span>已申请试用（<b><?php echo $product_details['applyed_num'];?></b>）</span>
+                <span>已申请试用（<b><?php echo $product_details['apply_count'];?></b>）</span>
                 <!--已申请试用账户名轮播-->
                 <div class="left tryAccount_carousel">
                     <div class="rollBox">
@@ -103,10 +103,10 @@
                             <a href="'.base_url('mall/homepage/productdetails/'.$v['act_id']).'"><img src="' . $v['picture_url'] . '" alt=""></a>
                             <p class="product_introduction">' . $v['product_name'] . '</p>
                             <p class="quantity">
-                            <span style="background-color:#a766e6">限量版' . $v['amount'] . '</span>' . $freight . '
+                            <span style="background-color:#a766e6">限量版' . $v['apply_amount'] . '</span>' . $freight . '
                         </p>
                         <p class="price">
-                            <span>&yen;' . $v['unit_price'] . '</span><span>已申请<b>' . $v['applyed_num'] . '</b>次</span>
+                            <span>&yen;' . $v['unit_price'] . '</span><span>已申请<b>' . $v['apply_count'] . '</b>次</span>
                         </p>
                     </div>';
                     }
@@ -118,10 +118,10 @@
                         <a href="'.base_url('mall/homepage/productdetails/'.$v['act_id']).'"><img src="' . $v['picture_url'] . '" alt=""></a>
                         <p class="product_introduction">' . $v['product_name'] . '</p>
                         <p class="quantity">
-                        <span style="background-color:#a766e6">限量版' . $v['amount'] . '</span>' . $freight . '
+                        <span style="background-color:#a766e6">限量版' . $v['apply_amount'] . '</span>' . $freight . '
                     </p>
                     <p class="price">
-                        <span>&yen;' . $v['unit_price'] . '</span><span>已申请<b>' . $v['applyed_num'] . '</b>次</span>
+                        <span>&yen;' . $v['unit_price'] . '</span><span>已申请<b>' . $v['apply_count'] . '</b>次</span>
                     </p>
                 </div>';
                     }
@@ -160,6 +160,37 @@
             document.getElementById("second").innerHTML=obj.second;
         });
     })
+
+    function apply_product() {
+        var act_id = "<?php echo $product_details['act_id'];?>";
+        $.ajax({
+            url:"<?=base_url('mall/ApplyTry/isApply')?>",
+            method: 'post',
+            data:{
+                act_id:act_id
+            },
+            success:function(result){
+                result = JSON.parse(result);
+                if(result.success==true){
+                    location.href ='<?=base_url('mall/applyTry/applyTry_one').'/'.$product_details['act_id']?>'
+                }
+                else{
+                    code = result.code;
+                    if(code == 1)
+                    {
+                        alert('您已经申请过该产品')
+                    }else if(code == 2)
+                    {
+                        location.href = '<?=base_url('login/index')?>'
+                    }
+                }
+            },
+            error:function(){
+                //alert('error');
+                console.log('error');
+            }
+        })
+    }
 </script>
 </body>
 </html>

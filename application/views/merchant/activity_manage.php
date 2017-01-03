@@ -48,12 +48,32 @@
                             <li>
                                 <p>商品名称：<span><?php echo $v['product_name'];?></span></p>
                                 <p>店铺名称：<span><?php echo $v['shopname'];?></span></p>
-                                <p>商品来源：<span><?php echo $v['platformid'];?></span></p>
-                                <p>商品分类：<span>女装，每单拍1个</span></p>
+                                <p>商品来源：<span><?php echo ($v['platformid']==1?"淘宝":"天猫");?></span></p>
+                                <p>商品分类：<span>
+                                <?php if($v['product_classify']==1){
+                                    echo "女装";
+                                }elseif ($v['product_classify']==2) {
+                                    echo "男装";
+                                }elseif ($v['product_classify']==3) {
+                                    echo "鞋包配饰";
+                                }elseif ($v['product_classify']==4) {
+                                    echo "居家生活";
+                                }elseif ($v['product_classify']==5) {
+                                    echo "数码电器";
+                                }elseif ($v['product_classify']==6) {
+                                    echo "母婴儿童";
+                                }elseif ($v['product_classify']==7) {
+                                    echo "食品酒水";
+                                }elseif ($v['product_classify']==8) {
+                                    echo "其他";
+                                }
+                                ?>
+
+                                ，每单拍<?php echo $v['buy_sum'];?>个</span></p>
                             </li>
                             <li>
                                 <p>商品押金：<span><?php echo $v['deposit'];?>元</span></p>
-                                <p>试用担保金：<span><?php echo $v['margin'];?>元</span></p>
+                                <p>试用担保金：<span><?php echo $v['guarantee'];?>元</span></p>
                                 <p>商品运费：<span><?php echo $v['freight'];?>元</span></p>
                                 <p>订单合计：<span><?php echo $v['total_money'];?>元</span></p>
                             </li>                            
@@ -64,7 +84,7 @@
                             <li>
                                 <p class="status">
                                     <span>
-                                        <input id="pay_now" type="button" value="立即付款"/>
+                                        <input id="pay_now" type="button" value="立即付款" onclick="get_actid(<?php echo $v['act_id'];?>)" />
                                     </span>
                                 </p>
                                 <p><span id="lefttime_<?php echo $v['act_id'];?>"></span></p>
@@ -120,6 +140,7 @@
     </div>
 </section>
 <footer id="footer"></footer>
+<input type="hidden" id="hidden_actid">
 <!--弹框--确认发货-->
 <div class="pay_now_modal">
     <div class="modal_box">
@@ -134,17 +155,17 @@
            <p>请输入支付密码</p>
             <table>
                 <tr>
-                    <td><input type="text"/></td>
-                    <td><input type="text"/></td>
-                    <td><input type="text"/></td>
-                    <td><input type="text"/></td>
-                    <td><input type="text"/></td>
-                    <td><input type="text"/></td>
+                    <td><input id="pwd1" type="text"/></td>
+                    <td><input id="pwd2" type="text"/></td>
+                    <td><input id="pwd3" type="text"/></td>
+                    <td><input id="pwd4" type="text"/></td>
+                    <td><input id="pwd5" type="text"/></td>
+                    <td><input id="pwd6" type="text"/></td>
                 </tr>
             </table>
         </div>
         <div class="modal_submit">
-            <input id="confirm_payment"type="button" value="确定"/>
+            <input id="confirm_payment"type="button" value="确定" onclick="check_pay()"/>
         </div>
     </div>
     <div class="mask_layer"></div>
@@ -165,7 +186,7 @@
             <p>请等待客服审核任务审核通过后会上线发布。</p>
         </div>
         <div class="modal_submit">
-            <input class="confirm" type="button" value="确定"/>
+            <input class="confirm" type="button" value="确定" onclick="end_act()"/>
         </div>
     </div>
     <div class="mask_layer"></div>
@@ -176,16 +197,16 @@
         <div class="modal_prompt">
             <span>提示</span>
             <a class="close" href="javascript:void(0);">
-                <img src="../../images/sj_grzx_tc_off_default.png" alt="">
+                <img src="images/merchant/sj_grzx_tc_off_default.png" alt="">
             </a>
         </div>
         <div class="succeed_content">
-            <p><img src="../../images/sj_fbsy_tc_icon_no_default.png" alt=""></p>
+            <p><img src="images/merchant/sj_fbsy_tc_icon_no_default.png" alt=""></p>
             <p class="payment_succeed">支付失败！</p>
             <p style="height:20px;"></p>
         </div>
         <div class="modal_submit">
-            <input class="confirm" type="button" value="确定"/>
+            <input class="confirm" type="button" value="确定" onclick="end_act()"/>
         </div>
     </div>
     <div class="mask_layer"></div>
@@ -219,10 +240,10 @@
 //        模态框的高度(500：表示头部和尾部高度的和)；
         $('.mask_layer').height(document.body.offsetHeight+500);
 //        确认付款弹框
-        $('#pay_now').bind('click',function(){
-            $('.pay_now_modal').css('display','block');
-            disableScroll();
-        });
+        // $('#pay_now').bind('click',function(){
+        //     $('.pay_now_modal').css('display','block');
+        //     disableScroll();
+        // });
 //        付款成功弹框
 //        $('#confirm_payment').bind('click',function(){
 //            $('.payment_modal').css('display','block');
@@ -230,10 +251,10 @@
 //            disableScroll();
 //        });
 //        付款失败弹框
-       $('#confirm_payment').bind('click',function(){
-        $('.paymentFailure_modal').css('display','block');
-        disableScroll();
-        });
+       // $('#confirm_payment').bind('click',function(){
+       //  $('.paymentFailure_modal').css('display','block');
+       //  disableScroll();
+       //  });
 
         $('.close,.cancel,.confirm').bind('click',function(){
             $('.pay_now_modal,.paymentFailure_modal,.payment_modal').css('display','none');
@@ -288,6 +309,50 @@
     }
     setTimeout("ydcountdown("+(s-1)+",$(\"#"+objid+"\"))","1000");
 }
+    function check_pay(){
+        var act_id = $("#hidden_actid").val();
+        var pwd1=$("#pwd1").val();
+        var pwd2=$("#pwd2").val();
+        var pwd3=$("#pwd3").val();
+        var pwd4=$("#pwd4").val();
+        var pwd5=$("#pwd5").val();
+        var pwd6=$("#pwd6").val();
+        if( pwd1 == '' || pwd2 == '' || pwd3 == '' ||pwd4 == '' ||pwd5 == '' ||pwd6 == ''){
+            return;
+        }
+        pwd = pwd1;
+        pwd += pwd2;
+        pwd += pwd3;
+        pwd += pwd4;
+        pwd += pwd5;
+        pwd += pwd6;
+
+        $.ajax({
+            url : admin.url+'merchant_activity_manage/check_pay',
+            data:{pwd:pwd,act_id:act_id},
+            type : 'post',
+            cache : false,
+            success : function (result){
+                if(result == "1"){
+                    $('.payment_modal').css('display','block');
+                }else{
+                    $('.paymentFailure_modal').css('display','block');
+                }
+            },
+            error : function (XMLHttpRequest, textStatus){
+                console.log("insert_fake_activity false");
+                console.log(XMLHttpRequest);
+                console.log(textStatus);
+            }
+        })
+    }
+    function end_act(){
+        location.href=admin.url+"merchant_activity_manage";
+    }
+    function get_actid(o){
+        $('#hidden_actid').val(o);
+        $('.pay_now_modal').css('display','block');
+    }
 </script>
 </body>
 </html>

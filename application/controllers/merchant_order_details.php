@@ -5,6 +5,7 @@ class merchant_order_details extends MY_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		parent::check_merchant_login();
 	}
 
 	public function index()

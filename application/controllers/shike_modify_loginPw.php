@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class shike_modify_loginPw extends MY_Controller {
+class Shike_modify_loginPw extends MY_Controller {
 
 	function __construct()
 	{

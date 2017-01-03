@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="<?php echo base_url(); ?>">
 
-    <title>商家后台</title>
+    <title>试客后台</title>
 
     <link rel="stylesheet" href="css/merchant/reset.css">
     <link rel="stylesheet" href="css/merchant/left_nav.css">

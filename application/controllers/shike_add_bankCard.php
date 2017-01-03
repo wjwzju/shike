@@ -1,10 +1,11 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class shike_add_bankCard extends MY_Controller {
+class Shike_add_bankCard extends MY_Controller {
 
 	function __construct()
 	{
 		parent::__construct();
+		parent::check_shike_login();
 	}
 
 	public function index()
@@ -16,7 +17,7 @@ class shike_add_bankCard extends MY_Controller {
 	}
 	public function post_add_bankcard()
 	{
-		$seller_id = "1";
+		$seller_id = $this->session->userdata('user_id');
 		$name = $this->input->post('name');
 		$phone = $this->input->post('phone');
 		$banktype = $this->input->post('banktype');
@@ -29,7 +30,8 @@ class shike_add_bankCard extends MY_Controller {
 			          'banktype' => $banktype,
 			          'branchbank' => $branchbank,
 			          'banknum' => $banknum,
-			          'type' => "1");
+			          'type' => "1",
+			          'time' => date('Y-m-d H:i:s',time()));
 		$this->db->insert('bankbind', $info);
 	}
 }
