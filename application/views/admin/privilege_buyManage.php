@@ -79,37 +79,45 @@ $(document).ready(function(e) {
             location.href="/admin_merchant_basic/search?search="+account;
         }
     </script>
-	<div class="formtitle1"><span>商家基本信息</span></div>
+	<div class="formtitle1"><span>优惠购买管理</span></div>
     <table class="tablelist">
     	<thead>
     	<tr>
             <th><input name="" type="checkbox" value="" checked="checked"/></th>
-        <th>商家ID</th>
-        <th>注册时间</th>
+        <th>订单编号</th>
+        <th>生成时间</th>
+        <th>试客账号</th>
         <th>商家账号</th>
-        <th>手机号</th>
-        <th>QQ号</th>
-        <th>会员类型</th>
-        <th>会员到期时间</th>
-		<th>操作</th>
+        <th>商品名称</th>
+        <th>店铺名称</th>
+        <th>平台</th>
+		<th>商品链接</th>
+        <th>优惠券金额</th>
+        <th>优惠券链接</th>
+        <th>二合一链接</th>
+        <th>状态</th>
         </tr>
         </thead>
         <tbody>
         <?php $count=-1;?>
-        <?php foreach($sellers as $v):?>
+        <?php foreach($discounts as $v):?>
         <?php $count++;?>
         <tr>
         <td><input name="" type="checkbox" value="" /></td>
-        <td><?php echo $v['seller_id'];?></td>
-        <td><?php echo $v['reg_time'];?></td>
-        <td><?php echo $v['account'];?></td>
-        <td><?php echo $v['tel'];?></td>
-        <td><?php echo $v['qq'];?></td>
-        <td><?php echo ($v['level']==1 ? '试用会员':'正式会员');?></td>
-		<td><?php echo $v['end_time'];?></td>
-        <td><a href="javascript:void(0)" class="tablelink" onclick="edit_merchant(<?php echo $count;?>)">编辑</a></td>
+        <td><?php echo $v['discount_id'];?></td>
+        <td><?php echo $v['apply_time'];?></td>
+        <td><?php echo $v['user_id'];?></td>
+        <td></td>
+        <td><?php echo $v['product_name'];?></td>
+        <td><?php echo $v['shopname'];?></td>
+        <td><?php echo ($v['platform_id']==1 ? '淘宝':'天猫');?></td>
+		<td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><?php echo $v['status'];?></td>
         </tr>
-        <input type="hidden" id="tag_<?php echo $count;?>" value="<?php echo $v['seller_id'];?>">
+        <!-- <input type="hidden" id="tag_<?php echo $count;?>" value="<?php echo $v['seller_id'];?>"> -->
         <?php endforeach ?>
         </tbody>
     </table>

@@ -10,15 +10,10 @@ class Admin_fund_record extends MY_Controller {
 
 	public function index()
 	{
-		$page = $this->input->get('per_page') ? $this->input->get('per_page') : 1;
-		$limit = 5;
-		$start = ($page - 1)*$limit;
-		$count = $this->db->query("select count(*) as count from sorder")->row_array();
-		$count = $count['count'];
-		$base_url = "/admin_privilege_buyManage/?";
-		$this->out_data['shops'] = $this->db->query("select * from sorder limit {$start},{$limit}")->result_array();
-		$this->out_data['pagin'] = parent::get_pagin($base_url, $count, $limit, 3,  true);
-		$this->out_data['con_page'] = 'admin/privilege_buyManage';
+
+		$this->out_data['shike_orders'] = $this->db->query("select * from platformorder where user_type=1")->result_array();
+		$this->out_data['merchant_orders'] = $this->db->query("select * from platformorder where user_type=0")->result_array();
+		$this->out_data['con_page'] = 'admin/fund_record';
 		$this->load->view('admin_default', $this->out_data);
 	}
 }
