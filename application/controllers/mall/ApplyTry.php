@@ -103,7 +103,7 @@ class applyTry extends MY_Controller
         );
         $this->db->insert('apply',$temp);
         $apply_id = $this->db->insert_id();
-        $this->db->query("update activity set applyed_num = applyed_num + 1 where act_id = $act_id");
+        $this->db->query("update activity set apply_count = apply_count + 1 where act_id = $act_id");
         if($apply_id)
         {
             $data = array(

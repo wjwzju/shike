@@ -66,7 +66,7 @@
         </div>
         <div class="no_account">
             <h1>已有账号？</h1>
-            <input  onclick="location.href='login.html'" type="button" value="立即登录"/>
+            <input  onclick="location.href='<?=base_url('login/index')?>'" type="button" value="立即登录"/>
         </div>
     </div>
 </section>
@@ -90,14 +90,14 @@
     {
         var phone = $('.phone2').val();
         var phone_error = $(".phone_error").text();
-        if(phone_error){
+        if(!phone){
             return;
         }
         $.ajax({
             url:"<?=base_url('sendcloud')?>",
             method:'post',
             data:{
-                tel:phone,
+                tel:phone
             },
             success : function (result){
                 if(result == 1){
@@ -131,6 +131,10 @@
         var password = $('.password').val();
         var user_qq = $('.user_qq').val();
         var verification_code = $('.verification_code').val();
+        if(!(user_name && phone && password && user_qq &&verification_code))
+        {
+            return
+        }
         $.ajax({
             url:"<?=base_url('mall/register/register_shike')?>",
             method: 'post',
@@ -162,7 +166,7 @@
                         '</div>'+
                         '</div>'+
                         '<div class="mask_layer"></div>'+
-                        '</div>'
+                        '</div>';
                     $('.myAlert').append(myalert);
                 }
                 else{

@@ -79,7 +79,7 @@
             <div class="store_login">
                 <img src="<?=base_url("images/mall/nav_icon_touxiang_default.png")?>" alt="">
                 <p>欢迎来到云推购</p>
-                <input onclick="location.href='<?=base_url("shike_login")?>'" class="login_btn" type="button" value="登录"/>
+                <input onclick="location.href='<?=base_url("login/index")?>'" class="login_btn" type="button" value="登录"/>
                 <p class="register"><a href="<?=base_url('mall/register/shike_register')?>">注册试客</a><a href="<?=base_url('mall/register/merchant_register')?>">注册商家</a></p>
                 <div class="project_pitching">
                     <ul>

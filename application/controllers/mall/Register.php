@@ -109,8 +109,8 @@ class register extends MY_Controller
         );
         $this->db->insert('user',$temp);
         $user_id = $this->db->insert_id();
-        $this->session->set_userdata('user_name', $user_name);
-        $this->session->set_userdata('seller_id', $user_id);
+        /*$this->session->set_userdata('user_name', $user_name);
+        $this->session->set_userdata('seller_id', $user_id);*/
         //TODO 登录
         $data = array(
             'success'=>true,
@@ -166,8 +166,8 @@ class register extends MY_Controller
         );
         $this->db->insert('seller',$temp);
         $user_id = $this->db->insert_id();
-        $this->session->set_userdata('user_name', $user_name);
-        $this->session->set_userdata('user_id', $user_id);
+        /*$this->session->set_userdata('user_name', $user_name);
+        $this->session->set_userdata('user_id', $user_id);*/
         /*echo json_encode($_SESSION);
         exit;*/
         $data = array(

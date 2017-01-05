@@ -15,9 +15,9 @@
             <div class="password_login">
                 <h1 class="left">密码登录</h1>
                 <p class="right">
-                    <a href="../register/shike_registration.html">注册试客</a>
+                    <a href="<?=base_url('mall/register/shike_register')?>">注册试客</a>
                     <span>/</span>
-                    <a href="../register/business_registration.html">注册商家</a>
+                    <a href="<?=base_url('mall/register/merchant_register')?>">注册商家</a>
                 </p>
             </div>
             <ul>
