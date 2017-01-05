@@ -43,9 +43,22 @@
                     <span>&yen;0.00</span>
                 </div>
                 <div class="main_five">
-                    <b>提现密码：</b>
-                    <input type="text"/>
-                    <span class="error">提现密码错误</span>
+                    <!--<b>提现密码：</b>-->
+                    <!--<input type="text"/>-->
+                    <!--<span class="error">提现密码错误</span>-->
+
+                    <table>
+                        <tr>
+                            <td><b>提现密码：</b></td>
+                            <td><input class="pw" type="password" maxlength="1"/></td>
+                            <td><input class="pw" type="password" maxlength="1"/></td>
+                            <td><input class="pw" type="password" maxlength="1"/></td>
+                            <td><input class="pw" type="password" maxlength="1"/></td>
+                            <td><input class="pw" type="password" maxlength="1"/></td>
+                            <td><input class="pw" type="password" maxlength="1"/></td>
+                            <td><span class="error">提现密码错误</span></td>
+                        </tr>
+                    </table>
                     <br/>
                     <p class="one">忘记密码请联系客服：<img src="../../images/sj_grzx_icon_qq_default.png" alt=""></p>
                 </div>
@@ -109,11 +122,14 @@
 </div>
 <script src="../../js/jquery-1.10.2.js"></script>
 <script src="../../js/modal_scrollbar.js"></script>
+<script src="../../js/payPw_verify.js"></script>
 <script>
     $(function(){
         $('#header').load("../common/merchant_header.html");
         $('#footer').load("../common/footer.html");
-        $('#left_nav').load("../common/left_nav.html");
+        $('#left_nav').load("../common/left_nav.html",function(){
+            $('.fund_manage ul>li').find('a').eq(1).addClass('leftNav_active')
+        });
 //        模态框的高度(500：表示头部和尾部高度的和)；
         $('.mask_layer').height(document.body.offsetHeight+500);
 

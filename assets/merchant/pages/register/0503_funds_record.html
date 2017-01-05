@@ -74,37 +74,37 @@
                     <td>充值失败</td>
                 </tr>
             </table>
-            <!--提现记录-->
-            <table class="withdraw_record">
-                <tr>
-                    <td>提现申请时间</td>
-                    <td>提现流水号</td>
-                    <td>金额</td>
-                    <td>实际到账金额</td>
-                    <td>状态</td>
-                </tr>
-                <tr>
-                    <td>2016.03.03 10:00:00</td>
-                    <td>12346789</td>
-                    <td>&yen;500.00</td>
-                    <td>&yen;495.00</td>
-                    <td>提现成功</td>
-                </tr>
-                <tr>
-                    <td>2016.03.03 10:00:00</td>
-                    <td>4567891233</td>
-                    <td>&yen;400.00</td>
-                    <td>&yen;395.00</td>
-                    <td>提现中</td>
-                </tr>
-                <tr>
-                    <td>2016.03.03 10:00:00</td>
-                    <td>45612345662</td>
-                    <td>&yen;300.00</td>
-                    <td>&yen;300.00</td>
-                    <td>押金提现</td>
-                </tr>
-            </table>
+                <!--提现记录-->
+                <table class="withdraw_record">
+                    <tr>
+                        <td>提现申请时间</td>
+                        <td>提现流水号</td>
+                        <td>金额</td>
+                        <td>实际到账金额</td>
+                        <td>状态</td>
+                    </tr>
+                    <tr>
+                        <td>2016.03.03 10:00:00</td>
+                        <td>12346789</td>
+                        <td>&yen;500.00</td>
+                        <td>&yen;495.00</td>
+                        <td>提现成功</td>
+                    </tr>
+                    <tr>
+                        <td>2016.03.03 10:00:00</td>
+                        <td>4567891233</td>
+                        <td>&yen;400.00</td>
+                        <td>&yen;395.00</td>
+                        <td>提现中</td>
+                    </tr>
+                    <tr>
+                        <td>2016.03.03 10:00:00</td>
+                        <td>45612345662</td>
+                        <td>&yen;300.00</td>
+                        <td>&yen;300.00</td>
+                        <td>押金提现</td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
@@ -115,7 +115,9 @@
     $(function(){
         $('#header').load("../common/merchant_header.html");
         $('#footer').load("../common/footer.html");
-        $('#left_nav').load("../common/left_nav.html");
+        $('#left_nav').load("../common/left_nav.html",function(){
+            $('.fund_manage ul>li').find('a').eq(2).addClass('leftNav_active')
+        });
         $('.record').bind('click',function(){
             $(this).find('a').css('color','#f10180');
             $(this).siblings().find('a').css('color','#323232')

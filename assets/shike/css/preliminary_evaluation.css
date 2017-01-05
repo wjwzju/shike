@@ -128,7 +128,7 @@
   border: 1px solid #969696;
   text-align: center;
 }
-#section .section_content .evaluate_content .good_picture a img {
+#section .section_content .evaluate_content .good_picture a img.img {
   margin-top: 23px;
 }
 #section .section_content .evaluate_content .good_picture a input[type='file'] {

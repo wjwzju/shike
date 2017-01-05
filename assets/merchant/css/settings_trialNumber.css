@@ -86,21 +86,49 @@
   color: #e61e28;
   font-size: 12px;
 }
+#section .section_main .store_content .settings_trialNumber .trial_content .try_num p.different_good {
+  padding-top: 0;
+}
+#section .section_main .store_content .settings_trialNumber .trial_content .try_num p.different_good b {
+  display: inline-block;
+  padding-top: 10px;
+  font-size: 14px;
+}
+#section .section_main .store_content .settings_trialNumber .trial_content .try_num p.different_good b span {
+  color: #f10180;
+}
+#section .section_main .store_content .settings_trialNumber .trial_content .try_num p.discount_couponURL input {
+  width: 625px;
+}
+#section .section_main .store_content .settings_trialNumber .notes {
+  padding: 20px 0;
+}
+#section .section_main .store_content .settings_trialNumber .notes p {
+  color: #323232;
+  font-size: 14px;
+  line-height: 24px;
+}
+#section .section_main .store_content .settings_trialNumber .notes p span {
+  color: #646464;
+  font-size: 12px;
+  margin-left: 42px;
+}
+#section .section_main .store_content .settings_trialNumber .notes p:first-of-type span {
+  margin-left: 0;
+}
 #section .section_main .store_content .settings_trialNumber .nextStep_btn input {
   width: 150px;
   height: 40px;
   line-height: 40px;
   border-radius: 5px;
-  color: #f10180;
   font-size: 16px;
-  background-color: #fff;
   border: 1px solid #f10180;
   margin: 20px 30px 30px 0;
-}
-#section .section_main .store_content .settings_trialNumber .nextStep_btn input:hover {
   background-color: #f10180;
   color: #fff;
 }
 #section .section_main .store_content .settings_trialNumber .nextStep_btn input:first-of-type {
   margin-left: 100px;
+  background-color: #fff;
+  color: #f10180;
 }

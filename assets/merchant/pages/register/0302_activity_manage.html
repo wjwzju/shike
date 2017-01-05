@@ -231,12 +231,12 @@
            <p>请输入支付密码</p>
             <table>
                 <tr>
-                    <td><input type="text"/></td>
-                    <td><input type="text"/></td>
-                    <td><input type="text"/></td>
-                    <td><input type="text"/></td>
-                    <td><input type="text"/></td>
-                    <td><input type="text"/></td>
+                    <td><input class="pw" type="password" maxlength="1"/></td>
+                    <td><input class="pw" type="password" maxlength="1"/></td>
+                    <td><input class="pw" type="password" maxlength="1"/></td>
+                    <td><input class="pw" type="password" maxlength="1"/></td>
+                    <td><input class="pw" type="password" maxlength="1"/></td>
+                    <td><input class="pw" type="password" maxlength="1"/></td>
                 </tr>
             </table>
         </div>
@@ -290,11 +290,14 @@
 
 <script src="../../js/jquery-1.10.2.js"></script>
 <script src="../../js/modal_scrollbar.js"></script>
+<script src="../../js/payPw_verify.js"></script>
 <script>
     $(function(){
         $('#header').load("../common/merchant_header.html");
         $('#footer').load("../common/footer.html");
-        $('#left_nav').load("../common/left_nav.html");
+        $('#left_nav').load("../common/left_nav.html",function(){
+            $('.try_manage ul>li').find('a').eq(1).addClass('leftNav_active')
+        });
 //        标题的点击事件
         $('.order').bind('click',function(){
             $(this).find('a').addClass('personal_active');

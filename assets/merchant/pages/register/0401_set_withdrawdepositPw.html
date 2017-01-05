@@ -17,15 +17,40 @@
         <div class="basic_setup left">
             <h1 class="title">设置提现密码</h1>
             <form class="revamp_content">
-                <label for="mewPw">新密码：</label>
-                <input id="mewPw" type="text"/>
-                <br/>
-                <p><span>密码不能为空</span></p>
+                <!--<label for="mewPw">新密码：</label>-->
+                <!--<input id="mewPw" type="text"/>-->
+                <!--<br/>-->
+                <!--<p><span>密码不能为空</span></p>-->
 
-                <label for="confirmPw">确认新密码：</label>
-                <input id="confirmPw" type="text"/>
-                <br/>
-                <p><span></span></p>
+                <!--<label for="confirmPw">确认新密码：</label>-->
+                <!--<input id="confirmPw" type="text"/>-->
+                <!--<br/>-->
+                <!--<p><span></span></p>-->
+
+
+                <table>
+                    <tr>
+                        <td><label for="mewPw">新密码：</label></td>
+                        <td><input class="pw" id="mewPw" type="password" maxlength="1"/></td>
+                        <td><input class="pw" type="password" maxlength="1"/></td>
+                        <td><input class="pw" type="password" maxlength="1"/></td>
+                        <td><input class="pw" type="password" maxlength="1"/></td>
+                        <td><input class="pw" type="password" maxlength="1"/></td>
+                        <td><input class="pw" type="password" maxlength="1"/></td>
+                    </tr>
+                </table>
+                <p><span>密码不能为空</span></p>
+                <table>
+                    <tr>
+                        <td><label for="confirmPw">确认新密码：</label></td>
+                        <td><input class="confirmPw" id="confirmPw" type="password" maxlength="1"/></td>
+                        <td><input class="confirmPw" type="password" maxlength="1"/></td>
+                        <td><input class="confirmPw" type="password" maxlength="1"/></td>
+                        <td><input class="confirmPw" type="password" maxlength="1"/></td>
+                        <td><input class="confirmPw" type="password" maxlength="1"/></td>
+                        <td><input class="confirmPw" type="password" maxlength="1"/></td>
+                    </tr>
+                </table>
 
                 <p class="btn">
                     <input onclick="location.href='0401_setPw_succeed.html'" type="button" value="确定"/>
@@ -37,11 +62,14 @@
 </section>
 <footer id="footer"></footer>
 <script src="../../js/jquery-1.10.2.js"></script>
+<script src="../../js/payPw_verify.js"></script>
 <script>
     $(function(){
         $('#header').load("../common/merchant_header.html");
         $('#footer').load("../common/footer.html");
-        $('#left_nav').load("../common/left_nav.html");
+        $('#left_nav').load("../common/left_nav.html",function(){
+            $('.account_information ul>li').find('a').eq(0).addClass('leftNav_active')
+        });
     })
 </script>
 </body>

@@ -249,17 +249,15 @@
   height: 40px;
   line-height: 40px;
   border-radius: 5px;
-  color: #f10180;
   font-size: 16px;
-  background-color: #fff;
   border: 1px solid #f10180;
-}
-#section .activity_details .commodity_information .nextStep_btn input:hover {
   background-color: #f10180;
   color: #fff;
 }
 #section .activity_details .commodity_information .nextStep_btn input:first-of-type {
   margin-right: 30px;
+  color: #f10180;
+  background-color: #fff;
 }
 #section .activity_details .commodity_information p.try_task {
   text-align: right;

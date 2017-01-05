@@ -23,6 +23,7 @@
   width: 1200px;
   height: 80px;
   margin: 0 auto;
+  padding-top: 9px;
 }
 .header .search .logo {
   cursor: pointer;
@@ -36,6 +37,7 @@
   padding-left: 20px;
   margin-left: 20px;
   border-left: 1px solid #c8c8c8;
+  letter-spacing: 5px;
 }
 .header .line {
   width: 100%;

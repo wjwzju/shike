@@ -47,6 +47,22 @@
   background-color: #f10180;
   color: #fff;
 }
+#section .section_main .basic_setup .revamp_content > table td:not(:first-child) {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #c8c8c8;
+}
+#section .section_main .basic_setup .revamp_content > table td:not(:first-child) input {
+  width: 30px;
+  height: 30px;
+  border: none;
+  padding-left: 12px;
+}
+#section .section_main .basic_setup .revamp_content > table td:not(:first-child) input:focus {
+  border: 2px solid #a6cef1;
+  border-radius: 0;
+  padding-left: 12px;
+}
 #section .section_main .basic_setup .revamp_succeed {
   padding-top: 50px;
 }

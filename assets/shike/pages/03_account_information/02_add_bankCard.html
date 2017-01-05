@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定银行卡</title>
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/reset_content.css">
+    <link rel="stylesheet" href="../../css/modal_alert.css">
+    <link rel="stylesheet" href="../../css/add_bankCard.css">
+</head>
+<body>
+<header id="header"></header>
+<section id="section">
+    <div class="section_main">
+        <!--左侧导航-->
+        <aside class="left" id="left_nav"></aside>
+        <!--修改登录密码-->
+        <div class="add_bankCard left">
+            <h1 class="title">绑定银行卡</h1>
+            <form action="" class="account_information">
+                <label for="username">姓名：</label>
+                <input id="username" type="text"/>
+                <br/>
+                <p><span>姓名不能为空</span></p>
+
+                <label for="phone">开户预留手机号：</label>
+                <input id="phone" type="text"/>
+                <br/>
+                <p><span></span></p>
+
+                <label for="selectBank">选择银行：</label>
+                <input id="selectBank" type="text"/>
+                <br/>
+                <p><span></span></p>
+
+                <label for="openBank">开户银行：</label>
+                <input id="openBank" type="text"/>
+                <br/>
+                <p><span></span></p>
+
+                <label for="openBankname">开户支行名称：</label>
+                <input id="openBankname" type="text"/>
+                <br/>
+                <p><span></span></p>
+
+                <label for="bankCardNum">银行卡号：</label>
+                <input id="bankCardNum" type="text"/>
+                <br/>
+                <p><span></span></p>
+
+                <p class="btn">
+                    <input id="confirm" type="button" value="确定"/>
+                    <input type="button" value="取消"/>
+                </p>
+            </form>
+            <p class="warm_prompt"><span>温馨提示：</span>如果您填写的银行卡账号不正确，可能无法成功返款，平台不承担由此产生的一切费用。</p>
+        </div>
+    </div>
+</section>
+<footer id="footer"></footer>
+<!--确认绑定成功弹框-->
+<div class="add_modal">
+    <div class="modal_box">
+        <div class="modal_prompt">
+            <span>提示</span>
+            <a class="close" href="javascript:void(0);">
+                <img src="../../images/sj_grzx_tc_off_default.png" alt="">
+            </a>
+        </div>
+        <div class="succeed_content">
+            <p><img src="../../images/sj_fbsy_tc_icon_right_default.png" alt=""></p>
+            <p class="payment_succeed">绑定成功！</p>
+        </div>
+        <div class="modal_submit">
+            <input class="confirm" onclick="location.href='02_bound_bankCard.html'"  type="button" value="确定"/>
+        </div>
+    </div>
+    <div class="mask_layer"></div>
+</div>
+<!--确认绑定失败弹框-->
+<div class="addFailure_modal">
+    <div class="modal_box">
+        <div class="modal_prompt">
+            <span>提示</span>
+            <a class="close" href="javascript:void(0);">
+                <img src="../../images/sj_grzx_tc_off_default.png" alt="">
+            </a>
+        </div>
+        <div class="succeed_content">
+            <p><img src="../../images/sj_fbsy_tc_icon_no_default.png" alt=""></p>
+            <p class="payment_succeed">绑定失败！</p>
+        </div>
+        <div class="modal_submit">
+            <input class="confirm" type="button" value="确定"/>
+        </div>
+    </div>
+    <div class="mask_layer"></div>
+</div>
+<script src="../../js/jquery-1.10.2.js"></script>
+<script src="../../js/modal_scrollbar.js"></script>
+<script>
+    $(function(){
+        $('#header').load("../common/merchant_header.html");
+        $('#footer').load("../common/footer.html");
+        $('#left_nav').load("../common/left_nav.html",function(){
+            $('.account_information ul>li').find('a').eq(1).addClass('left_nav_active');
+        });
+
+        $('.mask_layer').height(document.body.offsetHeight+500);
+//        添加成功弹框
+        $('#confirm').bind('click',function(){
+            $('.add_modal').css('display','block');
+           disableScroll();
+        });
+//        添加失败弹框
+//        $('#confirm').bind('click',function(){
+//            $('.addFailure_modal').css('display','block');
+//            disableScroll();
+//        });
+
+        $('.close,.cancel,.confirm').bind('click',function(){
+            $('.addFailure_modal,.add_modal').css('display','none');
+            enableScroll();
+        });
+    })
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

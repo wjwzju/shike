@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>领取下单</title>
+    <link rel="stylesheet" href="../../css/location_title.css">
+    <link rel="stylesheet" href="../../css/getOrder_stepThree.css">
+</head>
+<body>
+<header id="header"></header>
+<section id="section">
+    <div class="section_content">
+        <div class="location_title">
+            <ul>
+                <li>您的位置：</li>
+                <li><a href="../01_personal_center/personal_center.html">个人中心</a></li>
+                <li><img src="../../images/icon_arrow_default.png" alt=""></li>
+                <li><a href="02_try_winningManage.html">使用管理</a></li>
+                <li><img src="../../images/icon_arrow_default.png" alt=""></li>
+                <li>领取下单</li>
+            </ul>
+        </div>
+        <!--步骤介绍-->
+        <div class="step_introduce">
+            <!--步骤进度条所处状态-->
+            <div class="step_picture">
+                <img src="../../images/sk_zjgl_lqxd_bg_jdt3_default.png" alt="">
+            </div>
+            <!--试用商品-->
+            <div class="try_good">
+                <h1>3.浏览店铺</h1>
+                <!--第一步-->
+                <div class="first_step">
+                    <h2>
+                        第一步：如图所示，进入店铺首页。
+                    </h2>
+                    <img src="../../images/sk_zjgl_lqxd_bg_jrdp_default.png" alt="">
+                    <!--示例图片-->
+                </div>
+                <!--第二步-->
+                <div class="second_step">
+                    <h2>
+                        第二步：进入店铺首页后，随机点开4个商品，浏览完整个宝贝详情，并将宝贝详情页地址粘贴到以下输入框中：
+                    </h2>
+                    <p><b>注意：4个宝贝页面地址不可重复，如果搜到的商品少于4个，可填写淘宝其他链接。</b></p>
+                    <form action="">
+                        <label for="babyOne">宝贝页地址1：</label>
+                        <input id="babyOne" type="text" placeholder="将浏览器的商品链接复制粘贴到此处">
+                        <span>商品链接不能为空</span>
+                        <br/>
+                        <label for="babyTwo">宝贝页地址2：</label>
+                        <input id="babyTwo" type="text" placeholder="将浏览器的商品链接复制粘贴到此处">
+                        <span>商品链接不能为空</span>
+                        <br/>
+                        <label for="babyThree">宝贝页地址3：</label>
+                        <input id="babyThree" type="text" placeholder="将浏览器的商品链接复制粘贴到此处">
+                        <span></span>
+                        <br/>
+                        <label for="babyFour">宝贝页地址4：</label>
+                        <input id="babyFour" type="text" placeholder="将浏览器的商品链接复制粘贴到此处">
+                        <span></span>
+                        <br/>
+                    </form>
+                    <!--示例图片-->
+                </div>
+            </div>
+            <p class="step_btn">
+                <input  onclick="location.href='getOrders_stepTwo.html'" type="button" value="上一步">
+                <input  onclick="location.href='getOrders_stepFour.html'" class="next_step" type="button" value="下一步">
+            </p>
+        </div>
+    </div>
+</section>
+<footer id="footer"></footer>
+<script src="../../js/jquery-1.10.2.js"></script>
+<script>
+    $(function(){
+        $('#header').load("../common/merchant_header.html");
+        $('#footer').load("../common/footer.html");
+    })
+</script>
+</body>
+</html>

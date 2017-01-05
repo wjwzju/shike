@@ -112,7 +112,9 @@
     $(function(){
         $('#header').load("../common/merchant_header.html");
         $('#footer').load("../common/footer.html");
-        $('#left_nav').load("../common/left_nav.html");
+        $('#left_nav').load("../common/left_nav.html",function(){
+            $('.fund_manage ul>li').find('a').eq(1).addClass('leftNav_active')
+        });
 //        模态框的高度(500：表示头部和尾部高度的和)；
         $('.mask_layer').height(document.body.offsetHeight+500);
 

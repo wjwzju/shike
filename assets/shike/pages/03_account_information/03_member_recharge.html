@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>会员充值</title>
+    <link rel="stylesheet" href="../../css/reset.css">
+    <!--<link rel="stylesheet" href="../../css/reset_content.css">-->
+    <link rel="stylesheet" href="../../css/modal_alert.css">
+    <link rel="stylesheet" href="../../css/member_recharge.css">
+</head>
+<body>
+<header id="header"></header>
+<section id="section">
+    <!--会员充值详情-->
+    <div class="rechange_details">
+        <!--所在位置-->
+        <div class="location_title">
+            <ul>
+                <li>你所在的位置：</li>
+                <li class="order">
+                    <a class="personal_active" href="../01_personal_center/personal_center.html">个人中心</a>
+                </li>
+                <li class="order"><img src="../../images/sj_hdgl_icon_arrow_default.png" alt=""></li>
+                <li class="order">
+                    <a href="03_member_manage.html">会员管理</a>
+                </li>
+                <li class="order"><img src="../../images/sj_hdgl_icon_arrow_default.png" alt=""></li>
+                <li class="order">会员充值</li>
+            </ul>
+        </div>
+        <!--请选择开通时长-->
+        <div class="member_rechange">
+            <h1>请选择开通时长</h1>
+            <ul class="select_duration">
+                <li class="select one_years">
+                    <p><span>&yen;4000</span>.00</p>
+                    <p>会员时长：<b>1年</b></p>
+                </li>
+                <li class="select two_years">
+                    <p><span>&yen;7200</span>.00</p>
+                    <p>会员时长：<b>2年</b></p>
+                </li>
+                <li class="select three_years">
+                    <p><span>&yen;9600</span>.00</p>
+                    <p>会员时长：<b>3年</b></p>
+                </li>
+            </ul>
+            <div class="need_pay">
+                <p class="one">您已选择<b class="month">12</b>个月会员，有效期至<b>2012.12.12</b></p>
+                <p class="two">需要支付:<span class="money">&yen;4000.00</span></p>
+            </div>
+            <h1>请选择银行</h1>
+            <table>
+                <tr>
+                    <td class="bank">
+                        <img src="../../images/sj_zhxx_bg_bdyhk_nyyh_five_default.png" alt="">
+                    </td>
+                    <td class="bank">
+                        <img src="../../images/sj_zhxx_bg_bdyhk_nyyh_five_default.png" alt="">
+                    </td>
+                    <td class="bank">
+                        <img src="../../images/sj_zhxx_bg_bdyhk_nyyh_five_default.png" alt="">
+                    </td>
+                    <td class="bank">
+                        <img src="../../images/sj_zhxx_bg_bdyhk_nyyh_five_default.png" alt="">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="bank">
+                        <img src="../../images/sj_zhxx_bg_bdyhk_nyyh_five_default.png" alt="">
+                    </td>
+                    <td class="bank">
+                        <img src="../../images/sj_zhxx_bg_bdyhk_nyyh_five_default.png" alt="">
+                    </td>
+                    <td class="bank">
+                        <img src="../../images/sj_zhxx_bg_bdyhk_nyyh_five_default.png" alt="">
+                    </td>
+                    <td class="bank">
+                        <a href="javascript:void(0);">选择其他</a>
+                    </td>
+                </tr>
+            </table>
+            <p class="confirm_btn">
+                <input id="confirm_payment" type="button" value="确认付款"/>
+            </p>
+            <div class="warm_prompt">
+                <h1>温馨提示：</h1>
+                <p>1、信用卡支付时银行会自动提示风险安全提醒，可继续支付，请勿担心；</p>
+                <p>2、请注意您的银行卡充值限制，以便造成不便；</p>
+                <p>3、禁止洗钱、信用卡套现、虚假交易等行为，一经发现并确认，将终止该账号的试用；</p>
+                <p>
+                    4、如果充值金额没有及时到账，请联系客服。
+                    <img src="../../images/sj_grzx_icon_qq_default.png" alt="">
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<footer id="footer"></footer>
+
+
+<!--支付弹框-->
+<div class="pay_modal">
+    <div class="modal_box">
+        <div class="modal_prompt">
+            <span>提示</span>
+            <a class="close" href="javascript:void(0);">
+                <img src="../../images/sj_grzx_tc_off_default.png" alt="">
+            </a>
+        </div>
+        <div class="modal_content">
+            <p>请在新窗口完成支付，支付成功后请点击“已完成支付”<br/>若支付遇到问题请点击“支付遇到问题”</p>
+        </div>
+        <div class="modal_submit">
+            <input class="confirm" type="button" value="已完成支付"/>
+            <input class="cancel" type="button" value="支付遇到问题"/>
+        </div>
+    </div>
+    <div class="mask_layer"></div>
+</div>
+
+<script src="../../js/jquery-1.10.2.js"></script>
+<script src="../../js/modal_scrollbar.js"></script>
+<script src="../../js/mask_layer.js"></script>
+<script>
+    $(function(){
+        $('#header').load("../common/merchant_header.html");
+        $('#footer').load("../common/footer.html");
+        $('#left_nav').load("../common/left_nav.html",function(){
+            $('.account_information ul>li').find('a').eq(2).addClass('left_nav_active');
+        });
+//        充值不同的会员
+        $('.select').bind('click',function(){
+            $(this).css('border','1px solid #f10180');
+            $(this).siblings().css('border','1px solid #fff');
+        });
+        $('.one_years').bind('click',function(){
+            $('.month').text(12);
+            $('.money').text('¥4000');
+        });
+        $('.two_years').bind('click',function(){
+            $('.month').text(24);
+            $('.money').text('¥7200');
+        });
+        $('.three_years').bind('click',function(){
+            $('.month').text(36);
+            $('.money').text('¥9600');
+        });
+        $('.bank').bind('click',function(){
+            $(this).css('border','1px solid #e61e28');
+            $(this).siblings().css('border','1px solid #c8c8c8');
+            $(this).parent().siblings().find('td').css('border','1px solid #c8c8c8');
+        });
+
+        $('#confirm_payment').bind('click',function(){
+            $('.pay_modal').css('display','block');
+            disableScroll();
+        })
+        $('.close,.cancel,.confirm').bind('click',function(){
+            $('.pay_modal').css('display','none');
+            enableScroll();
+        });
+    })
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

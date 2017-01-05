@@ -96,7 +96,9 @@
     $(function(){
         $('#header').load("../common/merchant_header.html");
         $('#footer').load("../common/footer.html");
-        $('#left_nav').load("../common/left_nav.html");
+        $('#left_nav').load("../common/left_nav.html",function(){
+            $('.try_manage ul>li').find('a').eq(0).addClass('leftNav_active')
+        });
 
         $('.pinkage').bind('click',function(){
             $(this).css({'background':'url(../../images/spot.png) left center no-repeat'});

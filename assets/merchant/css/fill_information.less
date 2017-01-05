@@ -53,8 +53,11 @@
               color:#969696;
               margin:4px 0;
               a{
-                display:inline-block;
-                border-bottom:1px solid #969696;
+                //display:inline-block;
+                //border-bottom:1px solid #969696;
+                cursor:text;
+                font-weight:bold;
+                color:@deepfont_color;
               }
             }
             p.total_money{
@@ -81,18 +84,16 @@
             height: 40px;
             line-height: 40px;
             border-radius: 5px;
-            color:@deepred_color;
             font-size: 16px;
-            background-color:#fff;
             border:1px solid @deepred_color;
             margin:50px 30px 30px 0;
-            &:hover{
               background-color:@deepred_color;
               color:#fff;
-            }
           }
           input:first-of-type{
             margin-left:100px;
+            color:@deepred_color;
+            background-color:#fff;
           }
         }
         .note{

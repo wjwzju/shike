@@ -27,16 +27,16 @@
 #section .section_main .add_bankCard .account_information p.btn {
   padding-left: 422px;
 }
+#section .section_main .add_bankCard .account_information p.btn input:first-of-type {
+  color: #fff;
+  background-color: #f10180;
+}
 #section .section_main .add_bankCard .account_information p.btn input {
   width: 80px;
   margin-right: 38px;
   color: #f10180;
   border: 1px solid #f10180;
   background-color: #fff;
-}
-#section .section_main .add_bankCard .account_information p.btn input:hover {
-  color: #fff;
-  background-color: #f10180;
 }
 #section .section_main .add_bankCard .warm_prompt {
   padding-top: 4px;

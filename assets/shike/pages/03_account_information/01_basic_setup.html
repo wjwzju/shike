@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本设置</title>
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/reset_content.css">
+    <link rel="stylesheet" href="../../css/basic_setup.css">
+</head>
+<body>
+<header id="header"></header>
+<section id="section">
+    <div class="section_main">
+        <!--左侧导航-->
+        <aside class="left" id="left_nav"></aside>
+        <!--右侧店铺管理-->
+        <div class="basic_setup left">
+            <h1 class="title">基本设置</h1>
+            <div class="setup_content">
+                <ul>
+                    <li>
+                        <img src="../../images/sj_zhxx_icon_right_default.png" alt="">
+                    </li>
+                    <li><span>登录密码</span></li>
+                    <li>互联网账号存在被盗号风险，建议您定期修改密码以保护账号安全。</li>
+                    <li><a href="01_revamp_loginPw.html">修改</a></li>
+                </ul>
+                <ul>
+                    <li>
+                        <img src="../../images/sj_zhxx_icon_no_default.png" alt="">
+                    </li>
+                    <li><span>绑定淘宝</span></li>
+                    <li>淘宝账号绑定后不能修该。</li>
+                    <li><input onclick="location.href='01_bound_taobao.html'" type="button" value="立即绑定"/></li>
+                </ul>
+                <ul>
+                    <li>
+                        <img src="../../images/sj_zhxx_icon_no_default.png" alt="">
+                    </li>
+                    <li><span>提现密码</span></li>
+                    <li>设置密码后开启提现功能，可将平台资产转出。</li>
+                    <li><input onclick="location.href='01_set_withdrawdepositPw.html'" type="button" value="立即设置"/></li>
+                </ul>
+                <ul>
+                    <li>
+                        <img src="../../images/sj_zhxx_icon_right_default.png" alt="">
+                    </li>
+                    <li><span>联系方式</span></li>
+                    <li>
+                        <span>QQ:123456789</span><br/>
+                        <span>手机：1234567899</span>
+                    </li>
+                    <li><a href="01_revamp_QQ.html">修改</a><br/><a href="01_revamp_phone.html">修改</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<footer id="footer"></footer>
+<script src="../../js/jquery-1.10.2.js"></script>
+<script>
+    $(function(){
+        $('#header').load("../common/merchant_header.html");
+        $('#footer').load("../common/footer.html");
+        $('#left_nav').load("../common/left_nav.html",function(){
+            $('.account_information ul>li').find('a').eq(0).addClass('left_nav_active');
+        });
+    })
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

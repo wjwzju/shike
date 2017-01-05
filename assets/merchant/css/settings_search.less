@@ -22,8 +22,11 @@
           padding-bottom:18px;
           a{
             display:inline-block;
-            border-bottom:1px solid #646464;
-            color:#646464;
+            //border-bottom:1px solid #646464;
+            //color:#646464;
+            cursor:text;
+            font-weight:bold;
+            color:@deepfont_color;
           }
         }
         h2.title{
@@ -65,8 +68,11 @@
               padding-bottom:20px;
               a {
                 display: inline-block;
-                border-bottom: 1px solid #646464;
-                color: #646464;
+                //border-bottom: 1px solid #646464;
+                //color: #646464;
+                cursor:text;
+                font-weight:bold;
+                color:@deepfont_color;
               }
               input{
                 border:1px solid #969696;
@@ -131,18 +137,16 @@
             height: 40px;
             line-height: 40px;
             border-radius: 5px;
-            color:@deepred_color;
             font-size: 16px;
-            background-color:#fff;
             border:1px solid @deepred_color;
             margin:50px 30px 30px 0;
-            &:hover{
               background-color:@deepred_color;
               color:#fff;
-            }
           }
           input:first-of-type{
+            background-color:#fff;
             margin-left:100px;
+            color:@deepred_color;
           }
         }
         }

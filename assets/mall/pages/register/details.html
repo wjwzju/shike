@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>详情页</title>
+    <link rel="stylesheet" href="../../css/reset.css">
     <link rel="stylesheet" href="../../css/details.css">
 </head>
 <body>
@@ -37,7 +38,16 @@
             </div>
             <div class="activity left">
                 <div class="activity_time">
-                    <p>活动倒计时：<span>4天23小时05分</span></p>
+                    <p>活动倒计时：
+                        <span id="day"></span>
+                        <a>天</a>
+                        <span id="hour"></span>
+                        <a>时</a>
+                        <span id="minute"></span>
+                        <a>分</a>
+                        <span id="second"></span>
+                        <a>秒</a>
+                    </p>
                     <p>抽奖时间：2016.11.23 11:00:00</p>
                 </div>
                 <div class="apply_step">
@@ -53,7 +63,43 @@
         </div>
         <!--试用流程-->
         <div class="use_flow">
-            <div class="has_apply"><span>已申请试用（<b>10000</b>）</span></div>
+            <div class="has_apply">
+                <span>已申请试用（<b>10000</b>）</span>
+                <!--已申请试用账户名轮播-->
+                <div class="left tryAccount_carousel">
+                    <div class="rollBox">
+                        <div class="Cont" id="ISL_Cont">
+                            <div class="ScrCont">
+                                <div id="List1">
+                                    <!-- 用户名列表 begin -->
+                                    <div class="pic">
+                                        开始
+                                    </div>
+                                    <div class="pic">
+                                        李影影
+                                    </div>
+                                    <div class="pic">
+                                        莹莹
+                                    </div>
+                                    <div class="pic">
+                                        颖颖
+                                    </div>
+                                    <div class="pic">
+                                        影子
+                                    </div>
+                                    <div class="pic">
+                                        结束
+                                    </div>
+                                    <!-- 用户名列表 end -->
+                                </div>
+                                <div id="List2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <img src="../../images/xqy_bg_lc_default.png" alt="">
         </div>
         <!--商品试用-->
@@ -105,10 +151,19 @@
 </section>
 <footer id="footer"></footer>
 <script src="../../js/jquery-1.10.2.js"></script>
+<script src="../../js/index_goodsby.js"></script>
+<script src="../../js/timecountdown.min.js"></script>
 <script>
     $(function(){
         $('#header').load('../common/details_header.html');
         $('#footer').load('../common/footer.html');
+        var time=new Date().getTime()/1000+(60*60*24*7)
+        xcsoft.countdown(time,function(obj){
+            document.getElementById("day").innerHTML=obj.day;
+            document.getElementById("hour").innerHTML=obj.hour;
+            document.getElementById("minute").innerHTML=obj.minute;
+            document.getElementById("second").innerHTML=obj.second;
+        });
     })
 </script>
 </body>

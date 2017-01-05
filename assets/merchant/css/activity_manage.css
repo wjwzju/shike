@@ -160,6 +160,7 @@
 .paymentFailure_modal .modal_content table td input {
   width: 30px;
   height: 30px;
+  padding-left: 12px;
 }
 .pay_now_modal .modal_content table td input:focus,
 .payment_modal .modal_content table td input:focus,

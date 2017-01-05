@@ -159,8 +159,10 @@
         line-height:50px;
         border:1px solid @border_color ;
         border-bottom:none;
+        overflow:hidden;
         span{
           display:inline-block;
+          float:left;
           width:150px;
           text-align:center;
           color:@deepfont_color;
@@ -169,6 +171,41 @@
           b{
             font-weight:normal;
             color:@deepred_color;
+          }
+        }
+        .tryAccount_carousel{
+          width:1048px;
+          height:50px;
+          line-height:50px;
+          .rollBox #List1,.rollBox #List2{
+            float:left;
+            min-width:1048px;
+          }
+          .rollBox{
+            box-sizing:border-box;
+            width: 1048px;
+            height:50px;
+            margin:0 auto;
+            position:relative;
+            background-color:transparent ;
+            .Cont{
+              box-sizing:border-box;
+              width: 1048px;
+              background-color:transparent;
+              margin:0 auto;
+              overflow:hidden;
+              float:left;
+              .pic{
+                padding:0 20px;
+                height:50px;
+                line-height:50px;
+                float:left;
+                text-align:center;
+              }
+            }
+            .ScrCont{
+              width:10000000px;
+            }
           }
         }
       }

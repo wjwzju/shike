@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>消息通知</title>
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/reset_content.css">
+    <link rel="stylesheet" href="../../css/message_notification.css">
+</head>
+<body>
+<header id="header"></header>
+<section id="section">
+    <div class="section_main">
+        <!--左侧导航-->
+        <aside class="left" id="left_nav"></aside>
+        <!--消息通知-->
+        <div class="message_notification left">
+            <h1 class="title">消息通知</h1>
+            <table>
+                <tr>
+                    <td>2016.03.03</td>
+                    <td>云推购正式上线，公测期优惠活动乐不停！</td>
+                    <td><a href="02_message_details.html">查看详情</a></td>
+                </tr>
+                <tr>
+                    <td>2016.03.03</td>
+                    <td>云推购正式上线，公测期优惠活动乐不停！</td>
+                    <td><a href="02_message_details.html">查看详情</a></td>
+                </tr>
+                <tr>
+                    <td>2016.03.03</td>
+                    <td>云推购正式上线，公测期优惠活动乐不停！</td>
+                    <td><a href="02_message_details.html">查看详情</a></td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</section>
+<footer id="footer"></footer>
+<script src="../../js/jquery-1.10.2.js"></script>
+<script>
+    $(function(){
+        $('#header').load("../common/merchant_header.html");
+        $('#footer').load("../common/footer.html");
+        $('#left_nav').load("../common/left_nav.html",function(){
+            $('.message_center').find('a').addClass('left_nav_active');
+        });
+    })
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

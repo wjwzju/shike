@@ -316,14 +316,10 @@
   height: 40px;
   line-height: 40px;
   border-radius: 5px;
-  color: #f10180;
-  font-size: 16px;
-  background-color: #fff;
-  border: 1px solid #f10180;
-}
-#section .order_details .commodity_information .btn input:hover {
-  background-color: #f10180;
   color: #fff;
+  font-size: 16px;
+  background-color: #f10180;
+  margin-right: 50px;
 }
 .delivery_modal,
 .audit_modal,

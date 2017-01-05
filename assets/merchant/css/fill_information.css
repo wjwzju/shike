@@ -41,8 +41,9 @@
   margin: 4px 0;
 }
 #section .section_main .store_content .fill_information .shop_information .commodity_information p a {
-  display: inline-block;
-  border-bottom: 1px solid #969696;
+  cursor: text;
+  font-weight: bold;
+  color: #323232;
 }
 #section .section_main .store_content .fill_information .shop_information .commodity_information p.total_money {
   padding-left: 350px;
@@ -65,18 +66,16 @@
   height: 40px;
   line-height: 40px;
   border-radius: 5px;
-  color: #f10180;
   font-size: 16px;
-  background-color: #fff;
   border: 1px solid #f10180;
   margin: 50px 30px 30px 0;
-}
-#section .section_main .store_content .fill_information .nextStep_btn input:hover {
   background-color: #f10180;
   color: #fff;
 }
 #section .section_main .store_content .fill_information .nextStep_btn input:first-of-type {
   margin-left: 100px;
+  color: #f10180;
+  background-color: #fff;
 }
 #section .section_main .store_content .fill_information .note {
   padding: 15px 0 0 43px;

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../../css/reset.css">
     <link rel="stylesheet" href="../../css/reset_content.css">
     <link rel="stylesheet" href="../../css/deposit_recharge.css">
+    <link rel="stylesheet" href="../../css/modal_alert.css">
 </head>
 <body>
 <header id="header"></header>
@@ -70,17 +71,47 @@
     </div>
 </section>
 <footer id="footer"></footer>
+
+
+<!--支付弹框-->
+<div class="pay_modal">
+    <div class="modal_box">
+        <div class="modal_prompt">
+            <span>提示</span>
+            <a class="close" href="javascript:void(0);">
+                <img src="../../images/sj_grzx_tc_off_default.png" alt="">
+            </a>
+        </div>
+        <div class="modal_content">
+            <p>请在新窗口完成支付，支付成功后请点击“已完成支付”<br/>若支付遇到问题请点击“支付遇到问题”</p>
+        </div>
+        <div class="modal_submit">
+            <input class="confirm" type="button" value="已完成支付"/>
+            <input class="cancel" type="button" value="支付遇到问题"/>
+        </div>
+    </div>
+    <div class="mask_layer"></div>
+</div>
 <script src="../../js/jquery-1.10.2.js"></script>
+<script src="../../js/modal_scrollbar.js"></script>
+<script src="../../js/mask_layer.js"></script>
 <script>
     $(function(){
         $('#header').load("../common/merchant_header.html");
         $('#footer').load("../common/footer.html");
-        $('#left_nav').load("../common/left_nav.html");
+        $('#left_nav').load("../common/left_nav.html",function(){
+            $('.fund_manage ul>li').find('a').eq(0).addClass('leftNav_active')
+        });
         $('.bank').bind('click',function(){
             $(this).css('border','1px solid #e61e28');
             $(this).siblings().css('border','1px solid #c8c8c8')
             $(this).parent().siblings().find('td').css('border','1px solid #c8c8c8')
         });
+        $('#confirm_payment').bind('click',function(){
+            $('.pay_modal').css('display','block');
+            disableScroll();
+        })
+
     })
 </script>
 </body>

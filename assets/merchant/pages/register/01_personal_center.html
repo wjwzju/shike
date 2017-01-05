@@ -26,13 +26,13 @@
                     <div class="left username">
                         <h1>无所谓A</h1>
                         <p>会员等级：<span>试用会员</span> <b>2016.12.12会员到期</b></p>
-                        <input type="button" value="购买正式会员"/>
+                        <input onclick="location.href='0403_member_recharge.html'" type="button" value="购买正式会员"/>
                     </div>
                 </div>
                 <!--试用任务-->
                 <div class="left try_task">
                     <div class="try_monery">
-                        <input type="button" value="发布试用任务"/>
+                        <input onclick="location.href='0301_issue_try.html'" type="button" value="发布试用任务"/>
                         可用押金：<span>890.00</span>元
                         <a href="#">充值押金</a>
                         冻结押金：<span>1590.00</span>元
@@ -252,7 +252,9 @@
     $(function(){
         $('#header').load("../common/merchant_header.html");
         $('#footer').load("../common/footer.html");
-        $('#left_nav').load("../common/left_nav.html");
+        $('#left_nav').load("../common/left_nav.html",function(){
+            $('.personal_center').find('a').addClass('leftNav_active');
+        });
 //        标题的点击事件
         $('.order').bind('click',function(){
             $(this).find('a').addClass('personal_active');

@@ -51,7 +51,7 @@
             <p class="confirm_audit">确认删除？</p>
         </div>
         <div class="modal_submit">
-            <input class="confirm" type="button" value="确定"/>
+            <input class="confirm" onclick="location.href='0402_notBound_bankCard.html'" type="button" value="确定"/>
             <input class="cancel" type="button" value="取消"/>
         </div>
     </div>
@@ -63,7 +63,9 @@
     $(function(){
         $('#header').load("../common/merchant_header.html");
         $('#footer').load("../common/footer.html");
-        $('#left_nav').load("../common/left_nav.html");
+        $('#left_nav').load("../common/left_nav.html",function(){
+            $('.account_information ul>li').find('a').eq(1).addClass('leftNav_active')
+        });
 
 //        确认审核
         $('.mask_layer').height(document.body.offsetHeight+500);

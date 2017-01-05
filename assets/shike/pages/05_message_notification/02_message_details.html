@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>消息详情</title>
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/message_details.css">
+</head>
+<body>
+<header id="header"></header>
+<section id="section">
+    <!--订单详情-->
+    <div class="order_details">
+        <!--所在位置-->
+        <div class="location_title">
+            <ul>
+                <li>你所在的位置：</li>
+                <li class="order">
+                    <a class="personal_active" href="../01_personal_center/personal_center.html">个人中心</a>
+                </li>
+                <li class="order"><img src="../../images/sj_hdgl_icon_arrow_default.png" alt=""></li>
+                <li class="order">
+                    <a href="01_message_notification.html">消息通知</a>
+                </li>
+                <li class="order"><img src="../../images/sj_hdgl_icon_arrow_default.png" alt=""></li>
+                <li class="order">消息详情</li>
+            </ul>
+        </div>
+        <h1>云推购平台正式上线，公测期优惠活动乐不停！</h1>
+        <p>时间：2016.11.25 10:00:00</p>
+        <div  class="content">
+            <p>
+                宝钗黛玉： 可叹停机德，堪怜咏絮才。玉带林中挂， 金簪雪里埋。
+                元春： 二十年来辨是非，榴花开处照宫闱。三春争及初春景，虎兕相逢大梦归。
+                探春： 才自精明志自高，生于末世运偏消。清明涕送江边望，千里东风一梦遥。
+                湘云： 富贵又何为，襁褓之间父母违。展眼吊斜晖， 湘江水逝楚云飞。
+                妙玉： 欲洁何曾洁，云空未必空。可怜金玉质，终陷淖泥中。
+                迎春： 子系中山狼，得志便猖狂。金闺花柳质，一载赴黄粱。
+                香菱： 根并荷花一茎香，平生遭际实堪伤。自从两地生孤木，致使香魂返故乡。
+                惜春： 破三春景不长，缁衣顿改昔年妆。可怜绣户侯门女，独卧青灯古佛旁。
+                熙凤： 凡鸟偏从末世来，都知爱慕此生才。一从二令三人木， 哭向金陵事更哀。
+                巧姐： 势败休云贵，家亡莫论亲。偶因济刘氏，巧得遇恩人。
+                李纨： 桃李春风结子完，到头谁似一盆兰。如冰水好空相妒，枉与他人作笑谈。
+                可卿： 情天情海幻情身，情既相逢必主淫。漫言不肖皆荣出，造衅开端实在宁
+            </p>
+        </div>
+    </div>
+</section>
+<footer id="footer"></footer>
+
+<script src="../../js/jquery-1.10.2.js"></script>
+<script>
+    $(function(){
+        $('#header').load("../common/merchant_header.html");
+        $('#footer').load("../common/footer.html");
+        $('#left_nav').load("../common/left_nav.html",function(){
+            $('.message_center').find('a').addClass('left_nav_active');
+        });
+
+    })
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

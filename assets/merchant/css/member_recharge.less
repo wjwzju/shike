@@ -45,32 +45,44 @@
       ul.select_duration{
         overflow:hidden;
         padding:20px;
+        li:nth-of-type(1){
+          border:1px solid @deepred_color;
+        }
         li{
           float:left;
-          width:200px;
-          height:100px;
-          border:1px solid #c8c8c8;
-          border-radius:5px;
+          width:210px;
+          height:170px;
+          border:1px solid #fff;
           margin-right:80px;
+          cursor:pointer;
+          background:url(../images/sj_zhxx_bg_hycz_default.png)center no-repeat;
+          &:hover{
+            background:url(../images/sj_zhxx_bg_hycz_selected.png)center no-repeat;
+          }
           p{
             text-align:center;
           }
-          p:nth-of-type(1){
-            height:37px;
-            line-height:37px;
-            background-color:#f5f5f5;
-            border-radius:5px 5px 0 0;
+          p:nth-of-type(2){
+            padding-top: 20px;
+            padding-left:45px;
+            color:#fff;
+            font-size:14px;
             b{
+              display:block;
               font-size:20px;
-              color:@deepfont_color;
+              color:#fff;
+              margin-left: 60px;
             }
           }
-          p:nth-of-type(2){
-            height:63px;
-            line-height:63px;
+          p:nth-of-type(1){
+            padding-top:42px;
+            font-size:14px;
+            color:@deepred_color;
+            font-weight:bold;
             span{
               font-size:26px;
-              color:@span_color;
+              color:@deepred_color;
+              font-weight:bold;
             }
           }
         }
@@ -129,14 +141,9 @@
           line-height:40px;
           border:1px solid @deepred_color;
           border-radius:5px;
-          background-color:#fff;
-          color:@deepred_color;
           font-size:16px;
-          &:hover{
-            background-color:@deepred_color;
-            color:#fff;
-          }
-
+          background-color:@deepred_color;
+          color:#fff;
         }
       }
       //温馨提示
@@ -161,7 +168,34 @@
 
 
 
+//支付弹框
+.pay_modal{
+  display:none;
+  .modal_content{
+    text-align:center;
+    p{
+      font-size:14px;
+      color:@deepfont_color;
+      line-height:32px;
+      margin:43px 0;
+    }
+  }
+  .modal_submit {
+    padding-top:15px;
+    input {
+      width: 120px;
+      height: 30px;
+      line-height: 30px;
+      color: #fff;
+      background-color: @deepred_color;
+      border-radius: 5px;
+    }
 
+    input:nth-of-type(2){
+      margin-left: 35px;
+    }
+  }
+}
 
 
 

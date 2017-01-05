@@ -97,6 +97,41 @@
   font-size: 14px;
   padding-bottom: 25px;
 }
+#section .section_main .deposit_withdraw .fillIn_money .main_five > table {
+  margin-top: 10px;
+}
+#section .section_main .deposit_withdraw .fillIn_money .main_five > table td b {
+  display: inline-block;
+  width: 100px;
+  text-align: right;
+  font-size: 14px;
+}
+#section .section_main .deposit_withdraw .fillIn_money .main_five > table td span.error {
+  display: inline-block;
+  font-size: 12px;
+  margin-left: 10px;
+  color: #e61e28;
+  width: 500px;
+}
+#section .section_main .deposit_withdraw .fillIn_money .main_five > table td:not(:first-child) {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #c8c8c8;
+}
+#section .section_main .deposit_withdraw .fillIn_money .main_five > table td:not(:first-child) input.pw {
+  width: 30px;
+  height: 30px;
+  border: none;
+  padding-left: 12px;
+}
+#section .section_main .deposit_withdraw .fillIn_money .main_five > table td:not(:first-child) input.pw:focus {
+  border: 2px solid #a6cef1;
+  border-radius: 0;
+  padding-left: 12px;
+}
+#section .section_main .deposit_withdraw .fillIn_money .main_five > table td:last-of-type {
+  border: none;
+}
 #section .section_main .deposit_withdraw .confirm_btn {
   width: 100%;
   padding: 25px 0 50px 100px;
@@ -108,11 +143,7 @@
   line-height: 40px;
   border: 1px solid #f10180;
   border-radius: 5px;
-  background-color: #fff;
-  color: #f10180;
   font-size: 16px;
-}
-#section .section_main .deposit_withdraw .confirm_btn input:hover {
   background-color: #f10180;
   color: #fff;
 }

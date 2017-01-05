@@ -2,7 +2,7 @@
  * Created by 二更 on 2016/12/21.
  */
 $(function(){
-    $('.mask_layer').height(document.body.scrollHeight);
+    $('.mask_layer').height(document.body.scrollHeight+600);
 
     $('.close,.cancel,.confirm').bind('click',function(){
         $('.modal').css('display','none');

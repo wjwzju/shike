@@ -15,8 +15,9 @@
 }
 #section .section_main .store_content .settings_search p a {
   display: inline-block;
-  border-bottom: 1px solid #646464;
-  color: #646464;
+  cursor: text;
+  font-weight: bold;
+  color: #323232;
 }
 #section .section_main .store_content .settings_search h2.title {
   font-size: 16px;
@@ -62,8 +63,9 @@
 #section .section_main .store_content .settings_search .search_content .taobao_content p a,
 #section .section_main .store_content .settings_search .search_content .tmall_content p a {
   display: inline-block;
-  border-bottom: 1px solid #646464;
-  color: #646464;
+  cursor: text;
+  font-weight: bold;
+  color: #323232;
 }
 #section .section_main .store_content .settings_search .search_content .taobao_content p input,
 #section .section_main .store_content .settings_search .search_content .tmall_content p input {
@@ -132,16 +134,14 @@
   height: 40px;
   line-height: 40px;
   border-radius: 5px;
-  color: #f10180;
   font-size: 16px;
-  background-color: #fff;
   border: 1px solid #f10180;
   margin: 50px 30px 30px 0;
-}
-#section .section_main .store_content .settings_search .nextStep_btn input:hover {
   background-color: #f10180;
   color: #fff;
 }
 #section .section_main .store_content .settings_search .nextStep_btn input:first-of-type {
+  background-color: #fff;
   margin-left: 100px;
+  color: #f10180;
 }

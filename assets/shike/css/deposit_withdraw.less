@@ -109,6 +109,46 @@
             padding-bottom:25px;
           }
         }
+        //提现密码
+        .main_five{
+          >table{
+            margin-top:10px;
+            td{
+              b{
+                display: inline-block;
+                width: 100px;
+                text-align: right;
+                font-size: 14px;
+              }
+              span.error{
+                display: inline-block;
+                font-size: 12px;
+                margin-left: 10px;
+                color:@span_color;
+                width:500px;
+              }
+            }
+            td:not(:first-child){
+              width: 30px;
+              height: 30px;
+              border: 1px solid #c8c8c8;
+              input.pw{
+                width: 30px;
+                height: 30px;
+                border:none;
+                padding-left:12px;
+                &:focus{
+                  border:2px solid #a6cef1;
+                  border-radius:0;
+                  padding-left:12px;
+                }
+              }
+            }
+            td:last-of-type{
+              border:none;
+            }
+          }
+        }
       }
 
       .confirm_btn{

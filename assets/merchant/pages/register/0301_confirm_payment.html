@@ -63,12 +63,12 @@
                         <p>请输入支付密码：</p>
                         <table>
                             <tr>
-                                <td><input type="text"/></td>
-                                <td><input type="text"/></td>
-                                <td><input type="text"/></td>
-                                <td><input type="text"/></td>
-                                <td><input type="text"/></td>
-                                <td><input type="text"/></td>
+                                <td><input class="pw" type="password" maxlength="1"/></td>
+                                <td><input class="pw" type="password" maxlength="1"/></td>
+                                <td><input class="pw" type="password" maxlength="1"/></td>
+                                <td><input class="pw" type="password" maxlength="1"/></td>
+                                <td><input class="pw" type="password" maxlength="1"/></td>
+                                <td><input class="pw" type="password" maxlength="1"/></td>
                             </tr>
                         </table>
                     </div>
@@ -125,11 +125,14 @@
 </div>
 <script src="../../js/jquery-1.10.2.js"></script>
 <script src="../../js/modal_scrollbar.js"></script>
+<script src="../../js/payPw_verify.js"></script>
 <script>
     $(function(){
         $('#header').load("../common/merchant_header.html");
         $('#footer').load("../common/footer.html");
-        $('#left_nav').load("../common/left_nav.html");
+        $('#left_nav').load("../common/left_nav.html",function(){
+            $('.try_manage ul>li').find('a').eq(0).addClass('leftNav_active')
+        });
 
         $('.mask_layer').height(document.body.offsetHeight+500);
 

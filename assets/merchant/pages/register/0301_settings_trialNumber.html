@@ -54,11 +54,35 @@
                     <div class="try_num">
                         <p>
                         投放试用总份数：
-                        <input type="text" placeholder="份" />
-                        <b>（试用份数不得少于5件）</b>
+                            <input type="text" placeholder="份" />
+                            <b>（试用份数不得少于10份且必须为偶数）</b>
                         </p>
                         <p class="error_hint"><span>投放份数不能为空</span></p>
+
+                        <p class="different_good">
+                            <b>1.免费商用商品<span>5</span>份</b>
+                            <br/>
+                            <b>2.优惠购买商品<span>5</span>份</b>
+                        </p>
+                        <p>
+                            优惠券金额：
+                            <input type="text" placeholder="元" />
+                            <b>（优惠券金额必须大于商品价格的50%）</b>
+                        </p>
+                        <p class="discount_couponURL">
+                            优惠券链接：
+                            <input type="text">
+                        </p>
                     </div>
+                </div>
+                <!--注意事项-->
+                <div class="notes">
+                    <p>注意：<span>1、总份数必须为偶数，且不得少于10份；</span></p>
+                    <p><span>2、优惠金额必须大于商品价格的50%；</span></p>
+                    <p><span>3、优惠券链接必须是独家优惠券；</span></p>
+                    <p><span>4、优惠券有效时间至少要12天以上；</span></p>
+                    <p><span>5、优惠券每人领取数量可以设置1-2张，不用太多；</span></p>
+                    <p><span>6、优惠券总数量不用设置太多，但是不能低于10份。</span></p>
                 </div>
 
                 <div class="nextStep_btn">
@@ -75,7 +99,9 @@
     $(function(){
         $('#header').load("../common/merchant_header.html");
         $('#footer').load("../common/footer.html");
-        $('#left_nav').load("../common/left_nav.html");
+        $('#left_nav').load("../common/left_nav.html",function(){
+            $('.try_manage ul>li').find('a').eq(0).addClass('leftNav_active')
+        });
 
         $('[data-toggle="search"]').bind('click',function(){
             $(this).addClass('search_active');

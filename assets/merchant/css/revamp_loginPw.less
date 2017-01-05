@@ -45,15 +45,40 @@
         p.btn{
           padding-left:417px;
           padding-top:20px;
+          input:first-of-type{
+            color:#fff;
+            background-color:@deepred_color;
+          }
           input{
             width:80px;
             margin-right:32px;
             color:@deepred_color;
             border:1px solid @deepred_color;
             background-color:#fff;
-            &:hover{
-              color:#fff;
-              background-color:@deepred_color;
+            //&:hover{
+            //  color:#fff;
+            //  background-color:@deepred_color;
+            //}
+          }
+        }
+
+
+        //设置提现密码
+        >table{
+          td:not(:first-child){
+            width: 30px;
+            height: 30px;
+            border: 1px solid #c8c8c8;
+            input{
+              width: 30px;
+              height: 30px;
+              border:none;
+              padding-left:12px;
+              &:focus{
+                border:2px solid #a6cef1;
+                border-radius:0;
+                padding-left:12px;
+              }
             }
           }
         }

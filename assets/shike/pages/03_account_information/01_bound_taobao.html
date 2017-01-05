@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定淘宝</title>
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/reset_content.css">
+    <link rel="stylesheet" href="../../css/basic_setup.css">
+</head>
+<body>
+<header id="header"></header>
+<section id="section">
+    <div class="section_main">
+        <!--左侧导航-->
+        <aside class="left" id="left_nav"></aside>
+        <!--右侧店铺管理-->
+        <div class="basic_setup left">
+            <h1 class="title">绑定淘宝</h1>
+            <div class="bound_taobao">
+                <label for="">淘宝账户名：</label>
+                <input type="text"/>
+                <br>
+                <p><span>注意：</span>绑定的淘宝账号注册需要超过3个月且信誉等级在两颗红心以上。</p>
+                <p class="btn">
+                    <input onclick="location.href='01_submit_succeed.html'" type="button" value="提交审核"/>
+                    <input type="button" value="取消"/>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<footer id="footer"></footer>
+<script src="../../js/jquery-1.10.2.js"></script>
+<script>
+    $(function(){
+        $('#header').load("../common/merchant_header.html");
+        $('#footer').load("../common/footer.html");
+        $('#left_nav').load("../common/left_nav.html",function(){
+            $('.account_information ul>li').find('a').eq(0).addClass('left_nav_active');
+        });
+    })
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

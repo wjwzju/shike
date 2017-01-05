@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>初步评价</title>
+    <link rel="stylesheet" href="../../css/location_title.css">
+    <link rel="stylesheet" href="../../css/modal_alert.css">
+    <link rel="stylesheet" href="../../css/preliminary_evaluation.css">
+</head>
+<body>
+<header id="header"></header>
+<section id="section">
+    <div class="section_content">
+        <div class="location_title">
+            <ul>
+                <li>您的位置：</li>
+                <li><a href="../01_personal_center/personal_center.html">个人中心</a></li>
+                <li><img src="../../images/icon_arrow_default.png" alt=""></li>
+                <li><a href="02_try_winningManage.html">试用管理</a></li>
+                <li><img src="../../images/icon_arrow_default.png" alt=""></li>
+                <li>领取下单</li>
+            </ul>
+        </div>
+            <!--初步评价-->
+        <div class="evaluate_content">
+            <h1>初步评价</h1>
+            <!--商品信息-->
+            <div class="good_information">
+                <div class="title">
+                    <p class="left">
+                        <span>2016.11.18</span>
+                        <span>活动订单号：123460000</span>
+                    </p>
+                </div>
+                <div class="details">
+                    <ul>
+                        <li><img src="../../images/sj_grzx_bg_sp_default.png" alt=""></li>
+                        <li>
+                            <p>商品名称：<span>韩版冬季连帽外套女中长款宽松加厚棉衣xcsdcdsvcd</span></p>
+                            <p>商品分类：<span>女装</span></p>
+                            <p>商品规格：<span>米色.M</span></p>
+                            <p>商品链接：<span><a href="javascript:void(0);">https://wwww.yuntuigpi.com</a></span></p>
+                        </li>
+                        <li>
+                            <p>店铺名称：<span>yingyingyingyingyingyingying</span></p>
+                            <p>平台：<span>淘宝</span></p>
+                            <p>单价：<span><b>&yen;100.00</b>每单拍<b>1</b>个</span></p>
+                            <p>商品：<span>全国包邮</span></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--评价注意事项-->
+            <div class="evaluate_notice">
+                <h2>评价注意事项：</h2>
+                <p>1、收到商品后，请先不要在淘宝上进行评价，<b>先在平台进行初步评价，商家确认过后再去淘宝评价</b>；</p>
+                <p>2、请在平台中独自编写评价内容并提交好评，<b>照片必传（5张）</b>，上传的照片到时需要和淘宝评价中上传的五张照片一样，</p>
+                <p> &nbsp;&nbsp; &nbsp; 照片可以为包装照、商品正面、背面照、细节照等；图片尺寸建议1027*768以内，格式支持jpg、png。；</p>
+                <p>3、好评内容<b>严禁复制、抄袭、拼凑他人评价，一经发现，直接冻结平台账号</b>！</p>
+                <p>4、评价内容<b>不能包含“刷单”、“试用”、“团购”、“免费送”</b>等关键词。</p>
+            </div>
+            <!--好评内容-->
+            <div class="good_reputation">
+                <p class="left">好评内容：</p>
+                <textarea class="left" style="resize:none;" name="" autofocus></textarea>
+                <span>好评内容不能少于15个字</span>
+            </div>
+            <!--商品图片-->
+            <div class="good_picture">
+                <label for="good_picture">商品图片：</label>
+                <a class="result" href="javascript:void(0);">
+                    <input class="file_input" id="good_picture" type="file">
+                    <img class="img" src="../../images/sk_zjgl_lqxd_icon_jiahao_default.png" alt="">
+                </a>
+                <a class="result_01" href="javascript:void(0);">
+                    <input class="file_input_01"  type="file">
+                    <img class="img" src="../../images/sk_zjgl_lqxd_icon_jiahao_default.png" alt="">
+                </a>
+                <a class="result" href="javascript:void(0);">
+                    <input class="file_input"  type="file">
+                    <img class="img" src="../../images/sk_zjgl_lqxd_icon_jiahao_default.png" alt="">
+                </a>
+                <a class="result" href="javascript:void(0);">
+                    <input class="file_input" type="file">
+                    <img class="img" src="../../images/sk_zjgl_lqxd_icon_jiahao_default.png" alt="">
+                </a>
+                <a class="result" href="javascript:void(0);">
+                    <input class="file_input" type="file">
+                    <img class="img" src="../../images/sk_zjgl_lqxd_icon_jiahao_default.png" alt="">
+                </a>
+                <span>请上传5张商品图片</span>
+                <p>初步评价之后，商家将在48小时内审核评价，请耐心等待。</p>
+                <p>请按要求进行好评晒单，否则平台会冻结您的账户且试用本金将不予提现。</p>
+            </div>
+            <p class="step_btn">
+                <input id="confirm_submit" class="next_step" type="button" value="确认初步评价">
+            </p>
+        </div>
+    </div>
+</section>
+<div id="footer"></div>
+<!--确定已付款弹框-->
+<div class="confirm_submit_modal">
+    <div class="modal_box">
+        <div class="modal_prompt">
+            <span>提示</span>
+            <a class="close" href="javascript:void(0);">
+                <img src="../../images/sj_grzx_tc_off_default.png" alt="">
+            </a>
+        </div>
+        <div class="modal_content">
+            <!--确认审核-->
+            <p class="confirm_audit">确定提交初步评价？</p>
+        </div>
+        <div class="modal_submit">
+            <input class="confirm" type="button" value="确定"/>
+            <input class="confirm" type="button" value="取消"/>
+        </div>
+    </div>
+    <div class="mask_layer"></div>
+</div>
+<script src="../../js/jquery-1.10.2.js"></script>
+<script src="../../js/modal_scrollbar.js"></script>
+<script src="../../js/files.js"></script>
+<script>
+    $(function(){
+        $('#header').load("../common/merchant_header.html");
+        $('#footer').load("../common/footer.html");
+
+        $('#second_step').bind('click',function(){
+            $('.second_step .example_images').slideToggle();
+        })
+        //          弹框
+//        模态框的高度(500：表示头部和尾部高度的和)；
+        $('.mask_layer').height(document.body.offsetHeight+500);
+//        确认审核
+        $('#confirm_submit').bind('click',function(){
+            $('.confirm_submit_modal').css('display','block');
+            disableScroll();
+        });
+
+        $('.close,.cancel,.confirm').bind('click',function(){
+            $('.confirm_submit_modal').css('display','none');
+            enableScroll();
+        });
+    })
+</script>
+</body>
+</html>

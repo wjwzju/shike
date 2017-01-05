@@ -32,10 +32,10 @@
   height: 80px;
   margin: 0 auto;
 }
-.header .search .logo {
+.header .search > div.left .logo {
   cursor: pointer;
 }
-.header .search .details_title {
+.header .search > div.left .details_title {
   display: inline-block;
   height: 50px;
   line-height: 50px;
